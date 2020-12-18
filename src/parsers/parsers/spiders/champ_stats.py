@@ -2,7 +2,7 @@ import scrapy
 
 
 class ChampStatsSpider(scrapy.Spider):
-  name = "champ_stats"
+  name = 'champ_stats'
 
   def start_requests(self):
     urls = [
@@ -13,7 +13,7 @@ class ChampStatsSpider(scrapy.Spider):
       yield scrapy.Request(url=url, callback=self.parse)
 
   def parse(self, response):
-    page = response.url.split("/")[-2]
+    page = response.url.split('/')[-2]
     filename = f'quotes-{page}.html'
     with open(filename, 'wb') as f:
       f.write(response.body)
