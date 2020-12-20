@@ -19,9 +19,9 @@ class ChampStatsSpider(scrapy.Spider):
     def get(x):
       sel = stats.xpath(f'//div[@data-source="{x}"][1]').css('div.pi-data-value ::text').getall()
       text = ''.join(''.join(sel).split())
-      
+
       if ('/' in text):
-        return [float(i) for i in text.split('/')]
+        return [float(i) for i in text.split('/')][0]
       else:
         try:
           return float(text)
@@ -34,8 +34,6 @@ class ChampStatsSpider(scrapy.Spider):
         'armor': get('arm'),
         'attack_damage': get('ad'),
         'attack_speed': get('as'),
-        'crit_chance': .25,
-        'crit_modifier': 1.5,
         'health': get('hp'),
         'magic_resist': get('mr'),
         'mana': get('mana'),
