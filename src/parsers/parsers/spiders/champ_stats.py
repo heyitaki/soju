@@ -14,10 +14,19 @@ class ChampStatsSpider(scrapy.Spider):
       yield scrapy.Request(url=url, callback=self.parse)
 
   def parse(self, response):
-    stats = response.css('aside.pi-theme-teamfight-champion-bottom')
+    # Parse traits
+    trait_container = (response
+      .xpath('//tr[td[span[@data-type="trait"]]][1]')
+      .xpath('.//span[@data-type="trait"]'))
+    traits = [trait.attrib['data-param'] for trait in trait_container]
 
-    def get(x):
-      sel = stats.xpath(f'//div[@data-source="{x}"][1]').css('div.pi-data-value ::text').getall()
+    # Parse stats
+    stats = response.css('aside.pi-theme-teamfight-champion-bottom')
+    def getStat(x):
+      sel = (stats
+        .xpath(f'//div[@data-source="{x}"][1]')
+        .css('div.pi-data-value ::text')
+        .getall())
       text = ''.join(''.join(sel).split())
 
       if ('/' in text):
@@ -31,13 +40,14 @@ class ChampStatsSpider(scrapy.Spider):
     yield {
       'name': response.url.split('/')[-2],
       'stats': {
-        'armor': get('arm'),
-        'attack_damage': get('ad'),
-        'attack_speed': get('as'),
-        'health': get('hp'),
-        'magic_resist': get('mr'),
-        'mana': get('mana'),
-        'mana_start': get('startmana'),
-        'range': get('range'),
-      }
+        'armor': getStat('arm'),
+        'attack_damage': getStat('ad'),
+        'attack_speed': getStat('as'),
+        'health': getStat('hp'),
+        'magic_resist': getStat('mr'),
+        'mana': getStat('mana'),
+        'mana_start': getStat('startmana'),
+        'range': getStat('range'),
+      },
+      'traits': traits
     }

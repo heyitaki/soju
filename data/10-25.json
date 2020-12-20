@@ -2,22 +2,16 @@
   "name": "Kalista",
   "stats": {
     "armor": 20.0,
-    "attack_damage": [
-      65.0,
-      117.0,
-      210.6
-    ],
+    "attack_damage": 65.0,
     "attack_speed": 0.9,
-    "crit_chance": 0.25,
-    "crit_modifier": 1.5,
-    "health": [
-      550.0,
-      990.0,
-      1782.0
-    ],
+    "health": 550.0,
     "magic_resist": 20.0,
     "mana": 0.0,
     "mana_start": 0.0,
     "range": 3.0
-  }
+  },
+  "traits": [
+    "Cultist",
+    "Duelist"
+  ]
 }
