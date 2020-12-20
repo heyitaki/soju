@@ -13,18 +13,17 @@ class ChampStatsSpider(scrapy.Spider):
       }
     }
   }
+  urls = []
 
   def start_requests(self):
-    urls = [
-      # 'https://leagueoflegends.fandom.com/wiki/Jhin/TFT',
-      'https://leagueoflegends.fandom.com/wiki/Katarina/TFT',
-      'https://leagueoflegends.fandom.com/wiki/Kalista/TFT'
-    ]
+    start_url = 'https://leagueoflegends.fandom.com/wiki/Category:TFT_Set_4'
+    yield scrapy.Request(url=start_url, callback=self.parse_champ_names)
+      
+  def parse_champ_names(self, response):
+    links = response.css('a.category-page__member-link[href*="/TFT"]')
+    urls = ['https://leagueoflegends.fandom.com' + link.attrib['href'] for link in links]
     for url in urls:
       yield scrapy.Request(url=url, callback=self.parse_champ)
-
-  def parse_champ_names(self, response):
-    pass
 
   def parse_champ(self, response):
     # Parse traits

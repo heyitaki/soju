@@ -1,5 +1,773 @@
 [
 {
+  "name": "Azir",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 70.0,
+    "attack_speed": 0.85,
+    "health": 950.0,
+    "magic_resist": 20.0,
+    "mana": 150.0,
+    "mana_start": 75.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Warlord",
+    "Keeper",
+    "Emperor"
+  ]
+},
+{
+  "name": "Zed",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.75,
+    "health": 650.0,
+    "magic_resist": 20.0,
+    "mana": 0.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Ninja",
+    "Shade"
+  ]
+},
+{
+  "name": "Yuumi",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.6,
+    "health": 650.0,
+    "magic_resist": 20.0,
+    "mana": 40.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Spirit",
+    "Mystic"
+  ]
+},
+{
+  "name": "Aatrox",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.65,
+    "health": 800.0,
+    "magic_resist": 40.0,
+    "mana": 150.0,
+    "mana_start": 75.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Cultist",
+    "Vanguard"
+  ]
+},
+{
+  "name": "Aphelios",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.75,
+    "health": 500.0,
+    "magic_resist": 20.0,
+    "mana": 80.0,
+    "mana_start": 50.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Moonlight",
+    "Hunter"
+  ]
+},
+{
+  "name": "Ashe",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 80.0,
+    "attack_speed": 0.75,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 30.0,
+    "mana_start": 0.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Elderwood",
+    "Hunter"
+  ]
+},
+{
+  "name": "Annie",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.6,
+    "health": 750.0,
+    "magic_resist": 40.0,
+    "mana": 65.0,
+    "mana_start": 0.0,
+    "range": 2.0
+  },
+  "traits": [
+    "Fortune",
+    "Mage"
+  ]
+},
+{
+  "name": "Ahri",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.75,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 80.0,
+    "mana_start": 0.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Spirit",
+    "Mage"
+  ]
+},
+{
+  "name": "Yone",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 80.0,
+    "attack_speed": 0.95,
+    "health": 950.0,
+    "magic_resist": 40.0,
+    "mana": 60.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Exile",
+    "Adept"
+  ]
+},
+{
+  "name": "Zilean",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.75,
+    "health": 750.0,
+    "magic_resist": 20.0,
+    "mana": 150.0,
+    "mana_start": 100.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Cultist",
+    "Mystic"
+  ]
+},
+{
+  "name": "Yasuo",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 50.0,
+    "attack_speed": 0.7,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 45.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Exile",
+    "Duelist"
+  ]
+},
+{
+  "name": "Warwick",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 85.0,
+    "attack_speed": 0.8,
+    "health": 950.0,
+    "magic_resist": 40.0,
+    "mana": 70.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Divine",
+    "Hunter",
+    "Brawler"
+  ]
+},
+{
+  "name": "Vi",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 65.0,
+    "attack_speed": 0.6,
+    "health": 700.0,
+    "magic_resist": 30.0,
+    "mana": 50.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Warlord",
+    "Brawler"
+  ]
+},
+{
+  "name": "Xin_Zhao",
+  "stats": {
+    "armor": 45.0,
+    "attack_damage": 65.0,
+    "attack_speed": 0.85,
+    "health": 700.0,
+    "magic_resist": 30.0,
+    "mana": 60.0,
+    "mana_start": 30.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Warlord",
+    "Duelist"
+  ]
+},
+{
+  "name": "Wukong",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.65,
+    "health": 650.0,
+    "magic_resist": 30.0,
+    "mana": 50.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Divine",
+    "Vanguard"
+  ]
+},
+{
+  "name": "Vayne",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.9,
+    "health": 500.0,
+    "magic_resist": 20.0,
+    "mana": 0.0,
+    "mana_start": 0.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Dusk",
+    "Sharpshooter"
+  ]
+},
+{
+  "name": "Akali",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.85,
+    "health": 650.0,
+    "magic_resist": 20.0,
+    "mana": 20.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Ninja",
+    "Assassin"
+  ]
+},
+{
+  "name": "Twisted_Fate",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.65,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 70.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Cultist",
+    "Mage"
+  ]
+},
+{
+  "name": "Veigar",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.6,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 45.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Elderwood",
+    "Mage"
+  ]
+},
+{
+  "name": "Thresh",
+  "stats": {
+    "armor": 80.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.55,
+    "health": 700.0,
+    "magic_resist": 20.0,
+    "mana": 100.0,
+    "mana_start": 50.0,
+    "range": 2.0
+  },
+  "traits": [
+    "Dusk",
+    "Vanguard"
+  ]
+},
+{
+  "name": "Teemo",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.7,
+    "health": 500.0,
+    "magic_resist": 20.0,
+    "mana": 60.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Spirit",
+    "Sharpshooter"
+  ]
+},
+{
+  "name": "Talon",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 90.0,
+    "attack_speed": 0.8,
+    "health": 800.0,
+    "magic_resist": 20.0,
+    "mana": 40.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Enlightened",
+    "Assassin"
+  ]
+},
+{
+  "name": "Tahm_Kench",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 85.0,
+    "attack_speed": 0.5,
+    "health": 700.0,
+    "magic_resist": 30.0,
+    "mana": 0.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Fortune",
+    "Brawler"
+  ]
+},
+{
+  "name": "Sylas",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 70.0,
+    "attack_speed": 0.6,
+    "health": 700.0,
+    "magic_resist": 80.0,
+    "mana": 60.0,
+    "mana_start": 30.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Moonlight",
+    "Brawler"
+  ]
+},
+{
+  "name": "Sett",
+  "stats": {
+    "armor": 60.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.75,
+    "health": 1100.0,
+    "magic_resist": 30.0,
+    "mana": 175.0,
+    "mana_start": 100.0,
+    "range": 1.0
+  },
+  "traits": [
+    "The Boss",
+    "Brawler"
+  ]
+},
+{
+  "name": "Shen",
+  "stats": {
+    "armor": 60.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.65,
+    "health": 950.0,
+    "magic_resist": 40.0,
+    "mana": 100.0,
+    "mana_start": 50.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Ninja",
+    "Adept",
+    "Mystic"
+  ]
+},
+{
+  "name": "Sejuani",
+  "stats": {
+    "armor": 60.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.55,
+    "health": 850.0,
+    "magic_resist": 40.0,
+    "mana": 150.0,
+    "mana_start": 70.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Fortune",
+    "Vanguard"
+  ]
+},
+{
+  "name": "Riven",
+  "stats": {
+    "armor": 35.0,
+    "attack_damage": 70.0,
+    "attack_speed": 0.75,
+    "health": 800.0,
+    "magic_resist": 30.0,
+    "mana": 20.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Dusk",
+    "Keeper"
+  ]
+},
+{
+  "name": "Nunu",
+  "stats": {
+    "armor": 50.0,
+    "attack_damage": 65.0,
+    "attack_speed": 0.55,
+    "health": 750.0,
+    "magic_resist": 30.0,
+    "mana": 85.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Elderwood",
+    "Brawler"
+  ]
+},
+{
+  "name": "Nidalee",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.7,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 80.0,
+    "mana_start": 0.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Warlord",
+    "Sharpshooter"
+  ]
+},
+{
+  "name": "Pyke",
+  "stats": {
+    "armor": 50.0,
+    "attack_damage": 50.0,
+    "attack_speed": 0.6,
+    "health": 700.0,
+    "magic_resist": 30.0,
+    "mana": 125.0,
+    "mana_start": 75.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Cultist",
+    "Assassin"
+  ]
+},
+{
+  "name": "Nami",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.65,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 100.0,
+    "mana_start": 60.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Enlightened",
+    "Mage"
+  ]
+},
+{
+  "name": "Morgana",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 50.0,
+    "attack_speed": 0.7,
+    "health": 750.0,
+    "magic_resist": 60.0,
+    "mana": 120.0,
+    "mana_start": 60.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Enlightened",
+    "Dazzler"
+  ]
+},
+{
+  "name": "Lulu",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 50.0,
+    "attack_speed": 0.6,
+    "health": 500.0,
+    "magic_resist": 20.0,
+    "mana": 120.0,
+    "mana_start": 60.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Elderwood",
+    "Mage"
+  ]
+},
+{
+  "name": "Maokai",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.5,
+    "health": 700.0,
+    "magic_resist": 30.0,
+    "mana": 75.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Elderwood",
+    "Brawler"
+  ]
+},
+{
+  "name": "Lissandra",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.6,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 50.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Moonlight",
+    "Dazzler"
+  ]
+},
+{
+  "name": "Lux",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.7,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 100.0,
+    "mana_start": 40.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Divine",
+    "Dazzler"
+  ]
+},
+{
+  "name": "Lillia",
+  "stats": {
+    "armor": 50.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.75,
+    "health": 950.0,
+    "magic_resist": 80.0,
+    "mana": 120.0,
+    "mana_start": 80.0,
+    "range": 2.0
+  },
+  "traits": [
+    "Dusk",
+    "Mage"
+  ]
+},
+{
+  "name": "Lee_Sin",
+  "stats": {
+    "armor": 50.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.85,
+    "health": 1000.0,
+    "magic_resist": 50.0,
+    "mana": 40.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Divine",
+    "Duelist"
+  ]
+},
+{
+  "name": "Kindred",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 70.0,
+    "attack_speed": 0.8,
+    "health": 650.0,
+    "magic_resist": 20.0,
+    "mana": 35.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Spirit",
+    "Hunter"
+  ]
+},
+{
+  "name": "Kennen",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.65,
+    "health": 650.0,
+    "magic_resist": 30.0,
+    "mana": 125.0,
+    "mana_start": 65.0,
+    "range": 2.0
+  },
+  "traits": [
+    "Ninja",
+    "Keeper"
+  ]
+},
+{
+  "name": "Jhin",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 100.0,
+    "attack_speed": 0.85,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 4.0,
+    "mana_start": 0.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Cultist",
+    "Sharpshooter"
+  ]
+},
+{
+  "name": "Kayn",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 80.0,
+    "attack_speed": 1.0,
+    "health": 900.0,
+    "magic_resist": 40.0,
+    "mana": 50.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Tormented",
+    "Shade"
+  ]
+},
+{
+  "name": "Jax",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.75,
+    "health": 750.0,
+    "magic_resist": 30.0,
+    "mana": 110.0,
+    "mana_start": 60.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Divine",
+    "Duelist"
+  ]
+},
+{
+  "name": "Jarvan_IV",
+  "stats": {
+    "armor": 45.0,
+    "attack_damage": 60.0,
+    "attack_speed": 0.6,
+    "health": 600.0,
+    "magic_resist": 30.0,
+    "mana": 100.0,
+    "mana_start": 50.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Warlord",
+    "Keeper"
+  ]
+},
+{
   "name": "Katarina",
   "stats": {
     "armor": 20.0,
@@ -32,6 +800,194 @@
   "traits": [
     "Cultist",
     "Duelist"
+  ]
+},
+{
+  "name": "Jinx",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 75.0,
+    "attack_speed": 0.75,
+    "health": 650.0,
+    "magic_resist": 20.0,
+    "mana": 120.0,
+    "mana_start": 70.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Fortune",
+    "Sharpshooter"
+  ]
+},
+{
+  "name": "Irelia",
+  "stats": {
+    "armor": 40.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.65,
+    "health": 800.0,
+    "magic_resist": 40.0,
+    "mana": 100.0,
+    "mana_start": 50.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Enlightened",
+    "Divine",
+    "Adept"
+  ]
+},
+{
+  "name": "Hecarim",
+  "stats": {
+    "armor": 45.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.55,
+    "health": 750.0,
+    "magic_resist": 30.0,
+    "mana": 110.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Elderwood",
+    "Vanguard"
+  ]
+},
+{
+  "name": "Evelynn",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 70.0,
+    "attack_speed": 0.7,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 60.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Cultist",
+    "Shade"
+  ]
+},
+{
+  "name": "Garen",
+  "stats": {
+    "armor": 50.0,
+    "attack_damage": 50.0,
+    "attack_speed": 0.6,
+    "health": 600.0,
+    "magic_resist": 35.0,
+    "mana": 100.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Warlord",
+    "Vanguard"
+  ]
+},
+{
+  "name": "Fiora",
+  "stats": {
+    "armor": 35.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.75,
+    "health": 600.0,
+    "magic_resist": 30.0,
+    "mana": 75.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Enlightened",
+    "Duelist"
+  ]
+},
+{
+  "name": "Ezreal",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 80.0,
+    "attack_speed": 0.9,
+    "health": 750.0,
+    "magic_resist": 20.0,
+    "mana": 150.0,
+    "mana_start": 90.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Elderwood",
+    "Dazzler"
+  ]
+},
+{
+  "name": "Elise",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 45.0,
+    "attack_speed": 0.65,
+    "health": 600.0,
+    "magic_resist": 20.0,
+    "mana": 75.0,
+    "mana_start": 0.0,
+    "range": 2.0
+  },
+  "traits": [
+    "Cultist",
+    "Keeper"
+  ]
+},
+{
+  "name": "Cassiopeia",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 55.0,
+    "attack_speed": 0.6,
+    "health": 750.0,
+    "magic_resist": 20.0,
+    "mana": 150.0,
+    "mana_start": 80.0,
+    "range": 2.0
+  },
+  "traits": [
+    "Dusk",
+    "Mystic"
+  ]
+},
+{
+  "name": "Diana",
+  "stats": {
+    "armor": 30.0,
+    "attack_damage": 50.0,
+    "attack_speed": 0.65,
+    "health": 500.0,
+    "magic_resist": 20.0,
+    "mana": 70.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Moonlight",
+    "Assassin"
+  ]
+},
+{
+  "name": "Janna",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 40.0,
+    "attack_speed": 0.6,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 60.0,
+    "mana_start": 30.0,
+    "range": 4.0
+  },
+  "traits": [
+    "Enlightened",
+    "Mystic"
   ]
 }
 ]
