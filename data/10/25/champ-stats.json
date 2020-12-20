@@ -1,0 +1,37 @@
+[
+{
+  "name": "Katarina",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 65.0,
+    "attack_speed": 0.65,
+    "health": 500.0,
+    "magic_resist": 20.0,
+    "mana": 90.0,
+    "mana_start": 0.0,
+    "range": 1.0
+  },
+  "traits": [
+    "Warlord",
+    "Fortune",
+    "Assassin"
+  ]
+},
+{
+  "name": "Kalista",
+  "stats": {
+    "armor": 20.0,
+    "attack_damage": 65.0,
+    "attack_speed": 0.9,
+    "health": 550.0,
+    "magic_resist": 20.0,
+    "mana": 0.0,
+    "mana_start": 0.0,
+    "range": 3.0
+  },
+  "traits": [
+    "Cultist",
+    "Duelist"
+  ]
+}
+]

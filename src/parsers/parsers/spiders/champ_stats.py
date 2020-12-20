@@ -3,28 +3,41 @@ import scrapy
 
 class ChampStatsSpider(scrapy.Spider):
   name = 'champ_stats'
+  custom_settings = {
+    'FEEDS': {
+      '../../data/10/25/champ-stats.json': {
+        'format': 'json',
+        'encoding': 'utf-8',
+        'indent': 2,
+        'overwrite': True
+      }
+    }
+  }
 
   def start_requests(self):
     urls = [
       # 'https://leagueoflegends.fandom.com/wiki/Jhin/TFT',
-      # 'https://leagueoflegends.fandom.com/wiki/Lillia/TFT',
+      'https://leagueoflegends.fandom.com/wiki/Katarina/TFT',
       'https://leagueoflegends.fandom.com/wiki/Kalista/TFT'
     ]
     for url in urls:
-      yield scrapy.Request(url=url, callback=self.parse)
+      yield scrapy.Request(url=url, callback=self.parse_champ)
 
-  def parse(self, response):
+  def parse_champ_names(self, response):
+    pass
+
+  def parse_champ(self, response):
     # Parse traits
     trait_container = (response
-      .xpath('//tr[td[span[@data-type="trait"]]][1]')
+      .xpath('//tr[td[span[@data-type="trait" and @data-set="4"]]][1]')
       .xpath('.//span[@data-type="trait"]'))
     traits = [trait.attrib['data-param'] for trait in trait_container]
 
     # Parse stats
-    stats = response.css('aside.pi-theme-teamfight-champion-bottom')
+    stats = response.css('aside.pi-theme-teamfight-champion-bottom')[0]
     def getStat(x):
       sel = (stats
-        .xpath(f'//div[@data-source="{x}"][1]')
+        .xpath(f'.//div[@data-source="{x}"][1]')
         .css('div.pi-data-value ::text')
         .getall())
       text = ''.join(''.join(sel).split())
