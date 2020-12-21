@@ -1,0 +1,11 @@
+class Stats:
+  armor: float
+  attack_damage: float
+  attack_range: int
+  attack_speed: float
+  crit_chance: float
+  crit_modifier: float
+  health: int
+  magic_resist: float
+  mana: int
+  start_mana: int
