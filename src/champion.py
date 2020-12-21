@@ -1,21 +1,17 @@
 class Champion:
-  def __init__(
-    self, 
-    name: str, 
-    tier: int, 
-    level: int, 
-    cost: int, 
-    health: int, 
-    mana: int, 
-    start_mana: int,
-    attack_damage: int,
-    attack_speed: int,
-    dps: int,
-    attack_range: int,
-    armor: int,
-    magic_resist: int,
-    items: list,
-    synergies: list
-  ):
-    pass
+  armor: float
+  attack_damage: float
+  attack_range: int
+  attack_speed: float
+  chosen_trait: str or None
+  cost: int
+  crit_chance: float
+  health: int
+  items: list
+  level: int
+  magic_resist: float
+  mana: int
+  name: str
+  start_mana: int
+  traits: list
 

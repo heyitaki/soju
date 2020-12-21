@@ -1,0 +1,2 @@
+class Shop:
+  champs: list
