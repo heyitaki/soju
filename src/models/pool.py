@@ -1,7 +1,8 @@
 from typing import Dict, List
 
-from champion import Champion
 from constants import CHAMP_POOL_SIZE
+
+from champion import Champion
 from player import Player
 
 

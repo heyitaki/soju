@@ -1,6 +1,7 @@
 from typing import List
 
 import constants
+
 from champion import Champion
 
 
