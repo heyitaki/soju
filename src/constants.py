@@ -1,7 +1,8 @@
 BOARD_WIDTH = 7
 BOARD_HEIGHT = 4
 
-CHAMP_TIER_TO_NUM_IN_POOL = {
+# Champ cost -> total # in pool
+CHAMP_POOL_SIZE = {
   1: 29,
   2: 22,
   3: 18,
@@ -9,7 +10,8 @@ CHAMP_TIER_TO_NUM_IN_POOL = {
   5: 10
 }
 
-LEGEND_LEVEL_TO_PROBABILITY_BY_TIER = {
+# Player level -> champ drop rate
+CHAMP_DROP_RATE = {
   1: [1, 0, 0, 0, 0],
   2: [1, 0, 0, 0, 0],
   3: [.75, .25, 0, 0, 0],
@@ -21,3 +23,11 @@ LEGEND_LEVEL_TO_PROBABILITY_BY_TIER = {
   9: [.10, .15, .30, .30, .15]
 }
 
+# Champion level -> max health/atk damage modifier
+CHAMP_LEVEL_SCALING = {
+  0: 0.7,
+  1: 1.0,
+  2: 1.8,
+  3: 3.24,
+  4: 5.832
+}

@@ -6,10 +6,11 @@ from shop import Shop
 
 
 class Player:
-  health: int = 100
-  name: str
-  gold: int = 0
-  board: Type[Board]
   bench: Type[Bench]
+  board: Type[Board]
+  gold: int = 0
+  has_chosen: bool
+  health: int = 100
   level: int = 1
+  name: str
   shop: Type[Shop]
