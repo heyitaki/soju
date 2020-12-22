@@ -1,11 +1,11 @@
 import scrapy
 
 
-class ChampStatsSpider(scrapy.Spider):
-    name = "champ_stats"
+class ChampInfoSpider(scrapy.Spider):
+    name = "champ_info"
     custom_settings = {
         "FEEDS": {
-            "../../data/10/25/champ-stats.json": {
+            "../../data/10/25/champ-info.json": {
                 "format": "json",
                 "encoding": "utf-8",
                 "indent": 2,
