@@ -10,6 +10,8 @@ from player import Player
 
 
 class Pool:
+    """Container for all Champions unacquired by Players."""
+
     # {Champ cost: {Champ name: # left}}
     cost_to_counts: Dict[int, Dict[str, int]]
     # {Champ name: Champ}
@@ -17,6 +19,7 @@ class Pool:
 
     def __init__(self, champ_data_list: ChampDataList):
         self.cost_to_counts = dict()
+        self.name_to_champ = dict()
         for champ_data in champ_data_list:
             champ = Champion(champ_data)
             self.cost_to_counts[champ.cost][champ.name] = CHAMP_POOL_SIZE[champ.cost]
@@ -48,7 +51,7 @@ class Pool:
 
     def put(self, champs: List[Champion]) -> None:
         for champ in champs:
-            pass
+            self.cost_to_counts[champ.cost][champ.name] += 1
 
 
 def choose_rand_from_list(weighted_list: Sequence[Union[int, float]]):

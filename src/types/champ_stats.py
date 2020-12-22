@@ -1,4 +1,5 @@
 from typing import Dict, List, TypedDict
+import json
 
 
 class ChampStatsData(TypedDict):
@@ -12,16 +13,11 @@ class ChampStatsData(TypedDict):
     range: float
 
 
-# class ChampData(TypedDict):
-#     name: str
-#     stats: ChampStatsData
-#     cost: int
-#     traits: List[str]
-
-ChampData = TypedDict(
-    "ChampData",
-    {"name": str, "stats": ChampStatsData, "cost": int, "traits": List[str]},
-)
+class ChampData(TypedDict):
+    name: str
+    stats: ChampStatsData
+    cost: int
+    traits: List[str]
 
 
-ChampInfoList = List[ChampData]
+ChampDataList = List[ChampData]

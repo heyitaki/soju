@@ -18,27 +18,15 @@ class Stats:
     range: int
 
     def __init__(self, stats: ChampStatsData):
-        self.ability_power = 1.0
         self.armor = stats["armor"]
         self.attack_damage = stats["attack_damage"]
         self.attack_speed = stats["attack_speed"]
-        self.crit_chance = 0.25
-        self.crit_modifier = 1.5
-        self.dodge = 0
         self.health = stats["health"]
         self.magic_resist = stats["magic_resist"]
         self.mana = int(stats["mana"])
         self.mana_start = int(stats["mana_start"])
         self.range = int(stats["range"])
-
-    def toJSON(self) -> ChampStatsData:
-        return {
-            "armor": self.armor,
-            "attack_damage": self.attack_damage,
-            "attack_speed": self.attack_speed,
-            "health": self.health,
-            "magic_resist": self.magic_resist,
-            "mana": self.mana,
-            "mana_start": self.mana_start,
-            "range": self.range,
-        }
+        self.ability_power = 1.0
+        self.crit_chance = 0.25
+        self.crit_modifier = 1.5
+        self.dodge = 0
