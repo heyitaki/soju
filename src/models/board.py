@@ -1,16 +1,15 @@
 from typing import List, Union
 
+import constants
+
 from champion import Champion
-
-# import constants
-
 
 
 class Board:
-  hexes: List[List[Union[Champion, None]]]
+    hexes: List[List[Union[Champion, None]]]
 
-  def __init__(self):
-    self.hexes = [[None for _ in range(4)] for _ in range(7)]
-
-b= Board()
-print(len(b.hexes), len(b.hexes[0]))
+    def __init__(self):
+        self.hexes = [
+            [None for _ in range(constants.BOARD_WIDTH)]
+            for _ in range(constants.BOARD_HEIGHT)
+        ]

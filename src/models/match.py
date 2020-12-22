@@ -5,4 +5,4 @@ from player import Player
 
 
 class Match:
-  players: List[Player]
+    players: List[Player]

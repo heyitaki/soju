@@ -4,8 +4,8 @@ from player import Player
 
 
 class Game:
-  round: int
-  players: List[Player]
+    round: int
+    players: List[Player]
 
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass

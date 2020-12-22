@@ -11,17 +11,18 @@ from itemadapter import ItemAdapter
 
 
 class ParsersPipeline:
-  def process_item(self, item, spider):
-    return item
+    def process_item(self, item, spider):
+        return item
+
 
 class JsonPipeline:
-  def open_spider(self, spider):
-    self.file = open('../../data/10-25.json', 'w')
+    def open_spider(self, spider):
+        self.file = open("../../data/10-25.json", "w")
 
-  def close_spider(self, spider):
-    self.file.close()
+    def close_spider(self, spider):
+        self.file.close()
 
-  def process_item(self, item, spider):
-    line = json.dumps(ItemAdapter(item).asdict(), sort_keys=True, indent=2) + '\n'
-    self.file.write(line)
-    return item
+    def process_item(self, item, spider):
+        line = json.dumps(ItemAdapter(item).asdict(), sort_keys=True, indent=2) + "\n"
+        self.file.write(line)
+        return item

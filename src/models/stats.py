@@ -1,13 +1,13 @@
 class Stats:
-  ability_power: float
-  armor: float
-  attack_damage: float
-  attack_range: int
-  attack_speed: float
-  crit_chance: float
-  crit_modifier: float
-  dodge: float
-  health: int
-  magic_resist: float
-  mana: int
-  start_mana: int
+    ability_power: float
+    armor: float
+    attack_damage: float
+    attack_range: int
+    attack_speed: float
+    crit_chance: float
+    crit_modifier: float
+    dodge: float
+    health: int
+    magic_resist: float
+    mana: int
+    start_mana: int
