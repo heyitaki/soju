@@ -1,5 +1,5 @@
-import math
-import random
+import logging
+from random import uniform
 from types.champ_stats import ChampDataList
 from typing import Dict, List, Sequence, Tuple, Union
 
@@ -10,7 +10,7 @@ from player import Player
 
 
 class Pool:
-    """Container for all Champions unacquired by Players."""
+    """Container for all champions unacquired by players."""
 
     # {Champ cost: {Champ name: # left}}
     cost_to_counts: Dict[int, Dict[str, int]]
@@ -32,6 +32,7 @@ class Pool:
         # Get champ cost
         champ_cost = choose_rand_from_list(rates)
         if champ_cost == -1:
+            logging.error("Failed to select random champ cost.")
             return None
 
         # Get random champ with this cost
@@ -40,6 +41,7 @@ class Pool:
         champ_counts = [count for (_, count) in name_count_tuples]
         champ_idx = choose_rand_from_list(champ_counts)
         if champ_idx == -1:
+            logging.error("Failed to select random champion.")
             return None
         champ_tuple = name_count_tuples[champ_idx]
 
@@ -49,15 +51,15 @@ class Pool:
         name_to_counts[champ_tuple[0]] = champ_tuple[1] - 1
         return self.name_to_champ[champ_tuple[0]].clone()
 
-    def put(self, champs: List[Champion]) -> None:
-        for champ in champs:
-            self.cost_to_counts[champ.cost][champ.name] += 1
+    def put(self, champ: Champion) -> None:
+        """Introduce champ back to this pool."""
+        self.cost_to_counts[champ.cost][champ.name] += 1
 
 
 def choose_rand_from_list(weighted_list: Sequence[Union[int, float]]):
     """Choose a random index weighted by the values at each index of the given list."""
     total = sum(weighted_list)
-    rand = random.uniform(0, total)
+    rand = uniform(0, total)
     for i in range(len(weighted_list)):
         rand -= weighted_list[i]
         if rand <= 0:
