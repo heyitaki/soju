@@ -8,6 +8,7 @@ from shop import Shop
 class Player:
     bench: Type[Bench]
     board: Type[Board]
+    experience: int = 0
     gold: int = 0
     has_chosen: bool
     health: int = 100

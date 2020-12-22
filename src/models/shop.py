@@ -13,10 +13,11 @@ class Shop:
     player: Player
     pool: Pool
 
-    def __init__(self, player: Player):
+    def __init__(self, player: Player, pool: Pool):
         self.champs = []
         self.is_locked = False
         self.player = player
+        self.pool = pool
 
     def refresh(self):
         """Refresh shop choices unless it is locked."""
@@ -32,7 +33,13 @@ class Shop:
 
     def pick(self, index: int) -> Union[Champion, None]:
         """Pick specified champ from shop."""
+        # Determine if player can afford champ
         champ = self.champs[index]
+        if not champ or self.player.gold < champ.cost:
+            return None
+        self.player.gold -= champ.cost
+
+        # Remove champ from shop
         self.champs[index] = None
         return champ
 
