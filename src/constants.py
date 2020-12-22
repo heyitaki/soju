@@ -1,8 +1,10 @@
+from typing import Dict, List, Union
+
 BOARD_WIDTH = 7
 BOARD_HEIGHT = 4
 
 # Champ cost -> total # in pool
-CHAMP_POOL_SIZE = {
+CHAMP_POOL_SIZE: Dict[int, int] = {
   1: 29,
   2: 22,
   3: 18,
@@ -11,7 +13,7 @@ CHAMP_POOL_SIZE = {
 }
 
 # Player level -> champ drop rate
-CHAMP_DROP_RATE = {
+CHAMP_DROP_RATE: Dict[int, List[Union[int, float]]] = {
   1: [1, 0, 0, 0, 0],
   2: [1, 0, 0, 0, 0],
   3: [.75, .25, 0, 0, 0],
@@ -24,7 +26,7 @@ CHAMP_DROP_RATE = {
 }
 
 # Champion level -> max health/atk damage modifier
-CHAMP_LEVEL_SCALING = {
+CHAMP_LEVEL_SCALING: Dict[int, float] = {
   0: 0.7,
   1: 1.0,
   2: 1.8,
