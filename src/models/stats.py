@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from types.champ_stats import ChampStatsData
 
 
@@ -28,3 +30,15 @@ class Stats:
         self.mana = int(stats["mana"])
         self.mana_start = int(stats["mana_start"])
         self.range = int(stats["range"])
+
+    def toJSON(self) -> ChampStatsData:
+        return {
+            "armor": self.armor,
+            "attack_damage": self.attack_damage,
+            "attack_speed": self.attack_speed,
+            "health": self.health,
+            "magic_resist": self.magic_resist,
+            "mana": self.mana,
+            "mana_start": self.mana_start,
+            "range": self.range,
+        }

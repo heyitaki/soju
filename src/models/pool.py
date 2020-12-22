@@ -10,16 +10,17 @@ from player import Player
 
 
 class Pool:
-    # Champ cost -> [(Champ name, # left), ...]
-    cost_to_counts: Dict[int, List[Tuple[Champion, int]]]
+    # {Champ cost: {Champ name: # left}}
+    cost_to_counts: Dict[int, Dict[str, int]]
+    # {Champ name: Champ}
+    name_to_champ: Dict[str, Champion]
 
     def __init__(self, champ_data_list: ChampDataList):
         self.cost_to_counts = dict()
         for champ_data in champ_data_list:
             champ = Champion(champ_data)
-            if champ.cost in self.cost_to_counts:
-                self.cost_to_counts[champ.cost] = []
-            self.cost_to_counts[champ.cost].append((champ, CHAMP_POOL_SIZE[champ.cost]))
+            self.cost_to_counts[champ.cost][champ.name] = CHAMP_POOL_SIZE[champ.cost]
+            self.name_to_champ[champ.name] = champ
 
     def get(self, player: Player) -> Union[Champion, None]:
         """Get random champ from pool according to champ drop & player level probabilities."""
@@ -31,18 +32,19 @@ class Pool:
             return None
 
         # Get random champ with this cost
-        champ_list = self.cost_to_counts[champ_cost]
-        champ_counts: List[int] = [count for (_, count) in champ_list]
+        name_to_counts = self.cost_to_counts[champ_cost]
+        name_count_tuples = [(name, name_to_counts[name]) for name in name_to_counts]
+        champ_counts = [count for (_, count) in name_count_tuples]
         champ_idx = choose_rand_from_list(champ_counts)
         if champ_idx == -1:
             return None
-        champ_tuple = champ_list[champ_idx]
+        champ_tuple = name_count_tuples[champ_idx]
 
         # Update count and return Champion
         if champ_tuple[1] <= 0:
             return self.get(player)
-        champ_list[champ_idx] = (champ_tuple[0], champ_tuple[1] - 1)
-        return champ_tuple[0]
+        name_to_counts[champ_tuple[0]] = champ_tuple[1] - 1
+        return self.name_to_champ[champ_tuple[0]].clone()
 
     def put(self, champs: List[Champion]) -> None:
         for champ in champs:
