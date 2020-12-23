@@ -2,6 +2,9 @@ from typing import Dict, List, Union
 
 BOARD_WIDTH = 7
 BOARD_HEIGHT = 4
+BENCH_SIZE = 9
+COST_REROLL = 2
+NUM_PLAYERS = 8
 
 # Champ cost -> total # in pool
 CHAMP_POOL_SIZE: Dict[int, int] = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10}

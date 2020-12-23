@@ -6,7 +6,6 @@ from typing import Dict, List, Sequence, Tuple, Union
 from constants import CHAMP_DROP_RATE, CHAMP_POOL_SIZE
 
 from champion import Champion
-from player import Player
 
 
 class Pool:
@@ -25,9 +24,9 @@ class Pool:
             self.cost_to_counts[champ.cost][champ.name] = CHAMP_POOL_SIZE[champ.cost]
             self.name_to_champ[champ.name] = champ
 
-    def get(self, player: Player) -> Union[Champion, None]:
+    def get(self, player_level: int) -> Union[Champion, None]:
         """Get random champ from pool according to champ drop & player level probabilities."""
-        rates = CHAMP_DROP_RATE[player.level]
+        rates = CHAMP_DROP_RATE[player_level]
 
         # Get champ cost
         champ_cost = choose_rand_from_list(rates)
@@ -47,7 +46,7 @@ class Pool:
 
         # Update count and return Champion
         if champ_tuple[1] <= 0:
-            return self.get(player)
+            return self.get(player_level)
         name_to_counts[champ_tuple[0]] = champ_tuple[1] - 1
         return self.name_to_champ[champ_tuple[0]].clone()
 
