@@ -11,12 +11,14 @@ from champion import Champion
 class Pool:
     """Container for all champions unacquired by players."""
 
+    max_id: int
     # {Champ cost: {Champ name: # left}}
     cost_to_counts: Dict[int, Dict[str, int]]
     # {Champ name: Champ}
     name_to_champ: Dict[str, Champion]
 
     def __init__(self, champ_data_list: ChampDataList):
+        max_id = 0
         self.cost_to_counts = dict()
         self.name_to_champ = dict()
         for champ_data in champ_data_list:
@@ -48,7 +50,8 @@ class Pool:
         if champ_tuple[1] <= 0:
             return self.get(player_level)
         name_to_counts[champ_tuple[0]] = champ_tuple[1] - 1
-        return self.name_to_champ[champ_tuple[0]].clone()
+        self.max_id += 1
+        return self.name_to_champ[champ_tuple[0]].clone(self.max_id)
 
     def put(self, champ: Champion) -> None:
         """Introduce champ back to this pool."""

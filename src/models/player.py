@@ -10,16 +10,19 @@ from shop import Shop
 
 
 class Player:
+    """Container for all player-specific state. Represents a player in a game."""
+
     bench: Bench
     board: Board
-    experience: int = 0
-    gold: int = 0
+    experience: int
+    gold: int
     has_chosen: bool
-    health: int = 100
-    level: int = 1
+    health: int
+    level: int
+    max_champs: int  # Can be different from level because of FON
     name: str
-    shop: Shop
     pool: Pool
+    shop: Shop
 
     def __init__(self, name: str, pool: Pool):
         self.board = Board(self)
@@ -28,23 +31,26 @@ class Player:
         self.gold = 0
         self.has_chosen = False
         self.health = 100
+        self.level = 1
+        self.max_champs = 1
         self.name = name
         self.pool = pool
         self.shop = Shop(self, pool)
 
     def reroll(self) -> bool:
-        """Refresh shop if player can afford to. Returns whether reroll was successful or not."""
+        """Refresh shop if player can afford to. Returns whether reroll was successful."""
         if self.gold < COST_REROLL:
             return False
-
         self.gold -= COST_REROLL
         self.shop.refresh(True)
         return True
 
     def buy_champ(self, index: int):
+        """Buy champ from shop if player can afford to. Returns whether purchase was successful."""
         champ = self.shop.get(index)
         if not champ or self.bench.is_full() or self.gold < champ.cost:
-            return None
+            return False
         self.gold -= champ.cost
         self.shop.remove(index)
         self.bench.add_champ(champ)
+        return True

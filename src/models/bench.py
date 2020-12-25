@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 from constants import BENCH_SIZE
 
@@ -9,6 +9,8 @@ from player import Player
 
 
 class Bench:
+    """Container for all benched champs and items."""
+
     items: List[Item]
     champs: List[Champion]
     player: Player
@@ -18,11 +20,16 @@ class Bench:
         self.items = []
         self.player = player
 
-    def add_champ(self, champ: Champion):
+    def add_champ(self, champ: Champion) -> Union[Champion, None]:
         if not self.is_full():
             self.champs.append(champ)
-        else:
-            self.player.board.add_champ(champ)
+            return None
+        return champ
 
     def is_full(self):
         return len(self.champs) == BENCH_SIZE
+
+    def remove_champ(self, index: int) -> Union[Champion, None]:
+        if 0 <= index and index < len(self.champs):
+            return self.champs.pop(index)
+        return None
