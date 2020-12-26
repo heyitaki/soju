@@ -37,7 +37,7 @@ class Board:
             # Place champ on board
             if self.num_champs < self.player.max_champs:
                 self.num_champs += 1
-                self.set(pos, champ)
+                self.__set(pos, champ)
                 return True
             return False
         else:
@@ -47,7 +47,10 @@ class Board:
             return champ_to_bench
 
     def get(self, pos: Point):
-        return self.hexes[pos.y][pos.x]
+        try:
+            return self.hexes[pos.y][pos.x]
+        except:
+            return None
 
     def is_full(self):
         return self.num_champs >= self.player.max_champs
@@ -74,12 +77,12 @@ class Board:
             return False
         elif champ2:
             # Swap champs
-            self.set(start_pos, champ2)
-            self.set(end_pos, champ1)
+            self.__set(start_pos, champ2)
+            self.__set(end_pos, champ1)
         else:
             # Place champ
-            self.set(start_pos, None)
-            self.set(end_pos, champ1)
+            self.__set(start_pos, None)
+            self.__set(end_pos, champ1)
         return True
 
     def remove_champ(self, pos: Point):
@@ -88,12 +91,12 @@ class Board:
 
         champ = self.get(pos)
         if champ:
-            self.set(pos, None)
+            self.__set(pos, None)
             self.num_champs -= 1
             return champ
         return False
 
-    def set(self, pos: Point, champ: Union[Champion, None]):
+    def __set(self, pos: Point, champ: Union[Champion, None]):
         if not pos.is_valid():
             return None
         self.hexes[pos.y][pos.x] = champ

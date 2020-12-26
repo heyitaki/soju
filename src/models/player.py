@@ -5,6 +5,7 @@ from constants import COST_REROLL
 from bench import Bench
 from board import Board
 from champion import Champion
+from helpers.point import Point
 from pool import Pool
 from shop import Shop
 
@@ -37,6 +38,40 @@ class Player:
         self.pool = pool
         self.shop = Shop(self, pool)
 
+    def bench_champ(self, board_pos: Point, bench_index: int = None) -> bool:
+        """Move champ from board to bench if possible."""
+        champ1 = self.board.get(board_pos)
+        if champ1:
+            if not bench_index == None and (
+                champ2 := self.bench.get_champ(bench_index)
+            ):
+                # Swap champs
+                self.board.remove_champ(board_pos)
+                self.bench.remove_champ(bench_index)
+                self.board.add_champ(champ2, board_pos)
+                self.bench.add_champ(champ1)
+                return True
+            elif not self.bench.is_full():
+                # Add to bench
+                self.board.remove_champ(board_pos)
+                self.bench.add_champ(champ1)
+                return True
+        return False
+
+    def buy_champ(self, shop_index: int) -> bool:
+        """Buy champ from shop if player can afford to. Returns whether purchase was successful."""
+        champ = self.shop.get(shop_index)
+        if not champ or self.bench.is_full() or self.gold < champ.cost:
+            return False
+        self.gold -= champ.cost
+        self.shop.remove(shop_index)
+        self.bench.add_champ(champ)
+        return True
+
+    def move_champ(self, start_pos: Point, end_pos: Point) -> bool:
+        """Move a champ on the board to a different position."""
+        return self.board.move_champ(start_pos, end_pos)
+
     def reroll(self) -> bool:
         """Refresh shop if player can afford to. Returns whether reroll was successful."""
         if self.gold < COST_REROLL:
@@ -45,12 +80,21 @@ class Player:
         self.shop.refresh(True)
         return True
 
-    def buy_champ(self, index: int):
-        """Buy champ from shop if player can afford to. Returns whether purchase was successful."""
-        champ = self.shop.get(index)
-        if not champ or self.bench.is_full() or self.gold < champ.cost:
-            return False
-        self.gold -= champ.cost
-        self.shop.remove(index)
-        self.bench.add_champ(champ)
-        return True
+    def unbench_champ(self, bench_index: int, board_pos: Point):
+        """Move champ from bench to board if possible."""
+        champ1 = self.bench.get_champ(bench_index)
+        champ2 = self.board.get(board_pos)
+        if champ1:
+            if champ2:
+                # Swap champs
+                self.board.remove_champ(board_pos)
+                self.bench.remove_champ(bench_index)
+                self.board.add_champ(champ2, board_pos)
+                self.bench.add_champ(champ1)
+                return True
+            elif not self.board.is_full():
+                # Add to board
+                self.bench.remove_champ(bench_index)
+                self.board.add_champ(champ1, board_pos)
+                return True
+        return False

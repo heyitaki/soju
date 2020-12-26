@@ -26,6 +26,12 @@ class Bench:
             return None
         return champ
 
+    def get_champ(self, index: int):
+        try:
+            return self.champs[index]
+        except:
+            return None
+
     def is_full(self):
         return len(self.champs) == BENCH_SIZE
 
