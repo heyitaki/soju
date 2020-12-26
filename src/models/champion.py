@@ -38,6 +38,12 @@ class Champion:
         new_champ.items = [item] if item else []
         return new_champ
 
+    def get_sell_cost(self) -> int:
+        if self.level == 1:
+            return self.cost
+        else:
+            return self.cost - 1
+
 
 class ChampStats:
     ability_power: float

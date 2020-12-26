@@ -1,7 +1,7 @@
 from typing import List
 
 from constants import NUM_PLAYERS
-from load import load_champ_data
+from load_data import load_champ_data
 
 from player import Player
 from pool import Pool

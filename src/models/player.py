@@ -1,11 +1,7 @@
-from typing import Type
-
 from constants import COST_REROLL
 
 from bench import Bench
 from board import Board
-from champion import Champion
-from helpers.gold import get_sell_cost
 from helpers.point import Point
 from pool import Pool
 from shop import Shop
@@ -86,7 +82,7 @@ class Player:
         champ = self.bench.remove_champ(index)
         if champ:
             self.pool.put(champ)
-            self.gold += get_sell_cost(champ)
+            self.gold += champ.get_sell_cost()
             return True
         return False
 
@@ -95,7 +91,7 @@ class Player:
         champ = self.board.remove_champ(pos)
         if champ:
             self.pool.put(champ)
-            self.gold += get_sell_cost(champ)
+            self.gold += champ.get_sell_cost()
             return True
         return False
 

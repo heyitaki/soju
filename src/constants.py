@@ -10,7 +10,7 @@ NUM_PLAYERS = 8
 CHAMP_POOL_SIZE: Dict[int, int] = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10}
 
 # Player level -> champ drop rate
-CHAMP_DROP_RATE: Dict[int, List[Union[int, float]]] = {
+CHAMP_DROP_RATE: Dict[int, List[float]] = {
     1: [1, 0, 0, 0, 0],
     2: [1, 0, 0, 0, 0],
     3: [0.75, 0.25, 0, 0, 0],
