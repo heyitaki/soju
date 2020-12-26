@@ -5,6 +5,7 @@ from constants import COST_REROLL
 from bench import Bench
 from board import Board
 from champion import Champion
+from helpers.gold import get_sell_cost
 from helpers.point import Point
 from pool import Pool
 from shop import Shop
@@ -40,7 +41,7 @@ class Player:
 
     def bench_champ(self, board_pos: Point, bench_index: int = None) -> bool:
         """Move champ from board to bench if possible."""
-        champ1 = self.board.get(board_pos)
+        champ1 = self.board.get_champ(board_pos)
         if champ1:
             if not bench_index == None and (
                 champ2 := self.bench.get_champ(bench_index)
@@ -59,8 +60,8 @@ class Player:
         return False
 
     def buy_champ(self, shop_index: int) -> bool:
-        """Buy champ from shop if player can afford to. Returns whether purchase was successful."""
-        champ = self.shop.get(shop_index)
+        """Buy champ from shop if player can afford to."""
+        champ = self.shop.get_champ(shop_index)
         if not champ or self.bench.is_full() or self.gold < champ.cost:
             return False
         self.gold -= champ.cost
@@ -73,17 +74,35 @@ class Player:
         return self.board.move_champ(start_pos, end_pos)
 
     def reroll(self) -> bool:
-        """Refresh shop if player can afford to. Returns whether reroll was successful."""
+        """Refresh shop if player can afford to."""
         if self.gold < COST_REROLL:
             return False
         self.gold -= COST_REROLL
         self.shop.refresh(True)
         return True
 
+    def sell_champ_from_bench(self, index: int) -> bool:
+        """As self explanatory as it gets."""
+        champ = self.bench.remove_champ(index)
+        if champ:
+            self.pool.put(champ)
+            self.gold += get_sell_cost(champ)
+            return True
+        return False
+
+    def sell_champ_from_board(self, pos: Point) -> bool:
+        """Deja vu?"""
+        champ = self.board.remove_champ(pos)
+        if champ:
+            self.pool.put(champ)
+            self.gold += get_sell_cost(champ)
+            return True
+        return False
+
     def unbench_champ(self, bench_index: int, board_pos: Point):
         """Move champ from bench to board if possible."""
         champ1 = self.bench.get_champ(bench_index)
-        champ2 = self.board.get(board_pos)
+        champ2 = self.board.get_champ(board_pos)
         if champ1:
             if champ2:
                 # Swap champs

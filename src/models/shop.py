@@ -34,7 +34,7 @@ class Shop:
             if new_champ:
                 self.champs.append(new_champ)
 
-    def get(self, index: int) -> Union[Champion, None]:
+    def get_champ(self, index: int) -> Union[Champion, None]:
         """Get specified champ from shop."""
         if not 0 <= index or not index < len(self.champs):
             return None

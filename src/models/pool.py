@@ -55,7 +55,7 @@ class Pool:
 
     def put(self, champ: Champion) -> None:
         """Introduce champ back to this pool."""
-        self.cost_to_counts[champ.cost][champ.name] += 1
+        self.cost_to_counts[champ.cost][champ.name] += 3 ** (champ.level - 1)
 
 
 def choose_rand_from_list(weighted_list: Sequence[Union[int, float]]):
