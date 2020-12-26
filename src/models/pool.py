@@ -18,7 +18,7 @@ class Pool:
     name_to_champ: Dict[str, Champion]
 
     def __init__(self, champ_data_list: ChampDataList):
-        max_id = 0
+        self.max_id = 0
         self.cost_to_counts = dict()
         self.name_to_champ = dict()
         for champ_data in champ_data_list:

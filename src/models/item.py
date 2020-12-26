@@ -1,7 +1,11 @@
-from stats import Stats
+from __future__ import annotations
 
 
 class Item:
     name: str
     is_component: bool
-    stats: Stats
+    stats: ItemStats
+
+
+class ItemStats:
+    pass

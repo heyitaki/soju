@@ -9,6 +9,9 @@ class Point:
         self.x = x
         self.y = y
 
+    def is_equal(self, other):
+        return self.x == other.x and self.y == other.y
+
     def is_valid(self):
         """Determine if this point is within the bounds of the board."""
         return (
