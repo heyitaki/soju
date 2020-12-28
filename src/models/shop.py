@@ -45,6 +45,9 @@ class Shop:
         if 0 <= index and index < len(self.champs):
             self.champs[index] = None
 
+    def set_lock(self, is_locked: bool) -> None:
+        self.is_locked = is_locked
+
     def __flush(self):
         """Flush all remaining champs in this shop to the pool."""
         for champ in self.champs:

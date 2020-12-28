@@ -1,10 +1,16 @@
 from typing import Dict, List, Union
 
-BOARD_WIDTH = 7
-BOARD_HEIGHT = 4
 BENCH_SIZE = 9
-COST_REROLL = 2
+BOARD_HEIGHT = 4
+BOARD_WIDTH = 7
+EXP_BUY_AMOUNT = 4
+EXP_BUY_COST = 4
+EXP_BUY_MIN_LEVEL = 2
+EXP_LEVEL_AMOUNT = 2
+MAX_LEVEL = 9
 NUM_PLAYERS = 8
+REROLL_COST = 2
+
 
 # Champ cost -> total # in pool
 CHAMP_POOL_SIZE: Dict[int, int] = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10}
@@ -24,3 +30,6 @@ CHAMP_DROP_RATE: Dict[int, List[float]] = {
 
 # Champion level -> max health/atk damage modifier
 CHAMP_LEVEL_SCALING: Dict[int, float] = {0: 0.7, 1: 1.0, 2: 1.8, 3: 3.24, 4: 5.832}
+
+# Player level -> exp cap to level up
+LEVEL_EXP_CAP: Dict[int, int] = {3: 3, 4: 6, 5: 10, 6: 20, 7: 36, 8: 56, 9: 80}

@@ -1,8 +1,17 @@
-from constants import COST_REROLL
+from typing import List, Tuple
+
+from constants import (
+    EXP_BUY_COST,
+    EXP_BUY_MIN_LEVEL,
+    LEVEL_EXP_CAP,
+    MAX_LEVEL,
+    REROLL_COST,
+)
 
 from bench import Bench
 from board import Board
 from helpers.point import Point
+from helpers.result import Result
 from pool import Pool
 from shop import Shop
 
@@ -14,6 +23,7 @@ class Player:
     board: Board
     experience: int
     gold: int
+    history: List[Tuple[int, Result]]  # [(Player id, W/L = 1/0)]
     has_chosen: bool
     health: int
     level: int
@@ -65,15 +75,35 @@ class Player:
         self.bench.add_champ(champ)
         return True
 
+    def buy_experience(self) -> bool:
+        """Buy experience and level up if possible."""
+        # Can't buy exp until after first PvE wave
+        if (
+            self.level < EXP_BUY_MIN_LEVEL
+            or self.level >= MAX_LEVEL
+            or self.gold < EXP_BUY_COST
+        ):
+            return False
+
+        self.gold -= EXP_BUY_COST
+        self.experience += 4
+
+        # Determine if player should level up
+        exp_cap = LEVEL_EXP_CAP[self.level]
+        if self.experience >= exp_cap:
+            self.experience %= exp_cap
+            self.level += 1
+        return True
+
     def move_champ(self, start_pos: Point, end_pos: Point) -> bool:
         """Move a champ on the board to a different position."""
         return self.board.move_champ(start_pos, end_pos)
 
     def reroll(self) -> bool:
         """Refresh shop if player can afford to."""
-        if self.gold < COST_REROLL:
+        if self.gold < REROLL_COST:
             return False
-        self.gold -= COST_REROLL
+        self.gold -= REROLL_COST
         self.shop.refresh(True)
         return True
 
@@ -94,6 +124,9 @@ class Player:
             self.gold += champ.get_sell_cost()
             return True
         return False
+
+    def toggle_shop_lock(self):
+        return
 
     def unbench_champ(self, bench_index: int, board_pos: Point):
         """Move champ from bench to board if possible."""
