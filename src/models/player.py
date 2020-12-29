@@ -11,7 +11,6 @@ from constants import (
 from bench import Bench
 from board import Board
 from helpers.point import Point
-from helpers.result import Result
 from pool import Pool
 from shop import Shop
 
@@ -23,7 +22,6 @@ class Player:
     board: Board
     experience: int
     gold: int
-    history: List[Tuple[int, Result]]  # [(Player id, W/L = 1/0)]
     has_chosen: bool
     health: int
     level: int
