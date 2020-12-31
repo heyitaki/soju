@@ -4,7 +4,10 @@ from copy import copy, deepcopy
 from types.champ_stats import ChampData, ChampStatsData
 from typing import List, Union
 
+from load_data import load_champ_data
+
 from item import Item
+from player import Player
 
 
 class Champion:
@@ -14,6 +17,7 @@ class Champion:
     items: List[Item]
     level: int
     name: str
+    owner: Player
     stats: ChampStats
     stats_base: ChampStats
     traits: List[str]
@@ -50,6 +54,7 @@ class ChampStats:
     armor: float
     attack_damage: float
     attack_speed: float
+    base: ChampStats
     crit_chance: float
     crit_modifier: float
     dodge: float
@@ -60,15 +65,22 @@ class ChampStats:
     range: int
 
     def __init__(self, stats: ChampStatsData):
-        self.armor = stats["armor"]
-        self.attack_damage = stats["attack_damage"]
-        self.attack_speed = stats["attack_speed"]
-        self.health = stats["health"]
-        self.magic_resist = stats["magic_resist"]
-        self.mana = int(stats["mana"])
-        self.mana_start = int(stats["mana_start"])
-        self.range = int(stats["range"])
-        self.ability_power = 1.0
-        self.crit_chance = 0.25
-        self.crit_modifier = 1.5
-        self.dodge = 0
+        self.base.ability_power = 1.0
+        self.base.armor = stats["armor"]
+        self.base.attack_damage = stats["attack_damage"]
+        self.base.attack_speed = stats["attack_speed"]
+        self.base.base = self.base
+        self.base.crit_chance = 0.25
+        self.base.crit_modifier = 1.5
+        self.base.dodge = 0
+        self.base.health = stats["health"]
+        self.base.magic_resist = stats["magic_resist"]
+        self.base.mana = int(stats["mana"])
+        self.base.mana_start = int(stats["mana_start"])
+        self.base.range = int(stats["range"])
+
+    # def reset(self):
+
+cs = ChampStats(load_champ_data()[0]['stats'])
+print(dir(cs))
+        

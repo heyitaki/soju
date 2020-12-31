@@ -25,7 +25,7 @@ class Game:
     def get_matchups(self):
         """
         Get random matchups between remaining players for upcoming round.
-        TODO: use algo closer to Riot's.
+        TODO: use algo closer to Riot's: https://www.reddit.com/r/CompetitiveTFT/comments/fkdik7/amazing_tft_player_cracks_the_matchmaking/
         """
         length = len(self.players)
         p = sample(self.players, length)

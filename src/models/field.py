@@ -3,6 +3,7 @@ from typing import List, Tuple, Union
 from constants import BOARD_HEIGHT, BOARD_WIDTH
 
 from champion import Champion
+from helpers.point import Point
 from player import Player
 
 
@@ -12,5 +13,12 @@ class Field:
     hexes: List[List[Union[Champion, None]]]
 
     def __init__(self, players: Tuple[Player, Player]):
-        self.hexes = [[None for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT)]
+        self.hexes = [[None for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT * 2)]
         self.playerHome, self.playerAway = players
+    
+    def setup_hexes(self):
+        for y in range(BOARD_HEIGHT):
+            for x in range(BOARD_WIDTH):
+                self.hexes[y][x] = self.playerHome.board.get_champ(Point(x, y))
+    
+    def __set(self, )

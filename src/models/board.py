@@ -10,7 +10,7 @@ from player import Player
 class Board:
     """Hexagonal grid representing a player's half of the full field."""
 
-    num_pets: int
+    num_champs: int
     hexes: List[List[Union[Champion, None]]]
     player: Player
 
@@ -18,7 +18,6 @@ class Board:
         self.hexes = [[None for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT)]
         self.player = player
         self.num_champs = 0
-        self.num_pets = 0
 
     def add_champ(self, champ: Champion, pos: Point) -> Union[bool, Champion]:
         if not pos:
