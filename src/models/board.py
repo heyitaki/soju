@@ -1,10 +1,11 @@
-from typing import Any, List, Union, cast
+from typing import List, Union, cast, TYPE_CHECKING
 
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 
-from src.models.champion import Champion
-from src.models.helpers.point import Point
-from src.models.player import Player
+if TYPE_CHECKING:
+    from src.models.champion import Champion
+    from src.models.helpers.point import Point
+    from src.models.player import Player
 
 
 class Board:

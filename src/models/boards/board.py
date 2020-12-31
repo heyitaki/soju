@@ -1,7 +1,7 @@
-from typing import List, Union
+from typing import List, Union, TYPE_CHECKING
 
-from src.models.champion import Champion
-from src.models.helpers.point import Point
+if TYPE_CHECKING:
+    from src.models.champion import Champion
 
 
 class Board:

@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import TYPE_CHECKING
 
 from src.constants import (
     EXP_BUY_COST,
@@ -10,8 +10,10 @@ from src.constants import (
 from src.models.bench import Bench
 from src.models.board import Board
 from src.models.helpers.point import Point
-from src.models.pool import Pool
 from src.models.shop import Shop
+
+if TYPE_CHECKING:
+    from src.models.pool import Pool
 
 
 class Player:

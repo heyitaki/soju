@@ -1,5 +1,4 @@
-from typing import Dict, List, TypedDict
-import json
+from typing import List, TypedDict
 
 
 class ChampStatsData(TypedDict):

@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Dict, List
 
 BENCH_SIZE = 9
 BOARD_HEIGHT = 4

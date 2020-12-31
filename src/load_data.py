@@ -1,5 +1,4 @@
 import json
-import os
 
 from src.types.champ_stats import ChampDataList
 

@@ -1,11 +1,11 @@
-from typing import List, Union
+from typing import List, Union, TYPE_CHECKING
 
 from src.constants import BENCH_SIZE
 
-from src.models.board import Board
-from src.models.champion import Champion
-from src.models.item import Item
-from src.models.player import Player
+if TYPE_CHECKING:
+    from src.models.champion import Champion
+    from src.models.item import Item
+    from src.models.player import Player
 
 
 class Bench:

@@ -65,23 +65,25 @@ class ChampStats:
     mana_start: int
     range: int
 
-    def __init__(self, stats: ChampStatsData):
-        self.base.ability_power = 1.0
-        self.base.armor = stats["armor"]
-        self.base.attack_damage = stats["attack_damage"]
-        self.base.attack_speed = stats["attack_speed"]
-        self.base.base = self.base
-        self.base.crit_chance = 0.25
-        self.base.crit_modifier = 1.5
-        self.base.dodge = 0
-        self.base.health = stats["health"]
-        self.base.magic_resist = stats["magic_resist"]
-        self.base.mana = int(stats["mana"])
-        self.base.mana_start = int(stats["mana_start"])
-        self.base.range = int(stats["range"])
+    def __init__(self, stats: ChampStatsData = None):
+        if stats:
+            self.base = ChampStats()
+            self.base.ability_power = 1.0
+            self.base.armor = stats["armor"]
+            self.base.attack_damage = stats["attack_damage"]
+            self.base.attack_speed = stats["attack_speed"]
+            self.base.base = self.base
+            self.base.crit_chance = 0.25
+            self.base.crit_modifier = 1.5
+            self.base.dodge = 0
+            self.base.health = stats["health"]
+            self.base.magic_resist = stats["magic_resist"]
+            self.base.mana = int(stats["mana"])
+            self.base.mana_start = int(stats["mana_start"])
+            self.base.range = int(stats["range"])
 
     # def reset(self):
 
 
 cs = ChampStats(load_champ_data()[0]["stats"])
-print(dir(cs))
+# print([cs[k] for k in cs])

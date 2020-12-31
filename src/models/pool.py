@@ -1,10 +1,12 @@
 import logging
 from random import uniform
-from typing import Dict, List, Sequence, Tuple, Union
+from typing import Dict, Sequence, Union, TYPE_CHECKING
 
 from src.constants import CHAMP_DROP_RATE, CHAMP_POOL_SIZE
-from src.models.champion import Champion
-from src.types.champ_stats import ChampDataList
+
+if TYPE_CHECKING:
+    from src.models.champion import Champion
+    from src.types.champ_stats import ChampDataList
 
 
 class Pool:

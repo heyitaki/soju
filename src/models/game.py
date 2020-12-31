@@ -1,12 +1,13 @@
 from random import choice, sample
-from typing import List, Tuple
+from typing import List, Tuple, TYPE_CHECKING
 
 from src.constants import NUM_PLAYERS
 from src.load_data import load_champ_data
 
-from src.models.helpers.result import Result
-from src.models.player import Player
-from src.models.pool import Pool
+if TYPE_CHECKING:
+    from src.models.helpers.result import Result
+    from src.models.player import Player
+    from src.models.pool import Pool
 
 
 class Game:

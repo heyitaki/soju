@@ -1,8 +1,9 @@
-from typing import List, Union
+from typing import List, Union, TYPE_CHECKING
 
-from src.models.champion import Champion
-from src.models.player import Player
-from src.models.pool import Pool
+if TYPE_CHECKING:
+    from src.models.champion import Champion
+    from src.models.player import Player
+    from src.models.pool import Pool
 
 
 class Shop:
