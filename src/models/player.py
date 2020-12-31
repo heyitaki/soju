@@ -1,18 +1,17 @@
 from typing import List, Tuple
 
-from constants import (
+from src.constants import (
     EXP_BUY_COST,
     EXP_BUY_MIN_LEVEL,
     LEVEL_EXP_CAP,
     MAX_LEVEL,
     REROLL_COST,
 )
-
-from bench import Bench
-from board import Board
-from helpers.point import Point
-from pool import Pool
-from shop import Shop
+from src.models.bench import Bench
+from src.models.board import Board
+from src.models.helpers.point import Point
+from src.models.pool import Pool
+from src.models.shop import Shop
 
 
 class Player:

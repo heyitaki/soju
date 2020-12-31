@@ -1,8 +1,8 @@
 from typing import List, Union
 
-from champion import Champion
-from player import Player
-from pool import Pool
+from src.models.champion import Champion
+from src.models.player import Player
+from src.models.pool import Pool
 
 
 class Shop:

@@ -1,10 +1,10 @@
 from typing import Any, List, Union, cast
 
-from constants import BOARD_HEIGHT, BOARD_WIDTH
+from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 
-from champion import Champion
-from helpers.point import Point
-from player import Player
+from src.models.champion import Champion
+from src.models.helpers.point import Point
+from src.models.player import Player
 
 
 class Board:

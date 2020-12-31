@@ -1,4 +1,4 @@
-from constants import BOARD_HEIGHT, BOARD_WIDTH
+from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 
 
 class Point:

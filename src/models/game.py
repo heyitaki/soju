@@ -1,12 +1,12 @@
 from random import choice, sample
 from typing import List, Tuple
 
-from constants import NUM_PLAYERS
-from load_data import load_champ_data
+from src.constants import NUM_PLAYERS
+from src.load_data import load_champ_data
 
-from helpers.result import Result
-from player import Player
-from pool import Pool
+from src.models.helpers.result import Result
+from src.models.player import Player
+from src.models.pool import Pool
 
 
 class Game:

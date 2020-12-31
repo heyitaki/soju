@@ -1,7 +1,7 @@
 from typing import List, Union
 
-from champion import Champion
-from helpers.point import Point
+from src.models.champion import Champion
+from src.models.helpers.point import Point
 
 
 class Board:
@@ -10,5 +10,4 @@ class Board:
     def __init__(self, width: int, height: int):
         self.hexes = [[None for _ in range(width)] for _ in range(height)]
 
-    def get(self, pos: Point):
-        
+    # def get(self, pos: Point):

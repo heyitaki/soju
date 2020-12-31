@@ -1,11 +1,10 @@
 import logging
 from random import uniform
-from types.champ_stats import ChampDataList
 from typing import Dict, List, Sequence, Tuple, Union
 
-from constants import CHAMP_DROP_RATE, CHAMP_POOL_SIZE
-
-from champion import Champion
+from src.constants import CHAMP_DROP_RATE, CHAMP_POOL_SIZE
+from src.models.champion import Champion
+from src.types.champ_stats import ChampDataList
 
 
 class Pool:

@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 from copy import copy, deepcopy
-from types.champ_stats import ChampData, ChampStatsData
-from typing import List, Union
+from typing import TYPE_CHECKING, List, Union
 
-from load_data import load_champ_data
+from src.load_data import load_champ_data
 
-from item import Item
-from player import Player
+if TYPE_CHECKING:
+    from src.models.item import Item
+    from src.models.player import Player
+    from src.types.champ_stats import ChampData, ChampStatsData
 
 
 class Champion:
@@ -81,6 +82,6 @@ class ChampStats:
 
     # def reset(self):
 
-cs = ChampStats(load_champ_data()[0]['stats'])
+
+cs = ChampStats(load_champ_data()[0]["stats"])
 print(dir(cs))
-        

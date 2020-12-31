@@ -1,11 +1,11 @@
 from typing import List, Union
 
-from constants import BENCH_SIZE
+from src.constants import BENCH_SIZE
 
-from board import Board
-from champion import Champion
-from item import Item
-from player import Player
+from src.models.board import Board
+from src.models.champion import Champion
+from src.models.item import Item
+from src.models.player import Player
 
 
 class Bench:
