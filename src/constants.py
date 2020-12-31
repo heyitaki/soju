@@ -1,22 +1,21 @@
-from typing import Dict, List
+from typing import Dict, Final, List, Literal
 
-BENCH_SIZE = 9
-BOARD_HEIGHT = 4
-BOARD_WIDTH = 7
-EXP_BUY_AMOUNT = 4
-EXP_BUY_COST = 4
-EXP_BUY_MIN_LEVEL = 2
-EXP_LEVEL_AMOUNT = 2
-MAX_LEVEL = 9
-NUM_PLAYERS = 8
-REROLL_COST = 2
-
+BENCH_SIZE: Final[int] = 9
+BOARD_HEIGHT: Final[int] = 4
+BOARD_WIDTH: Final[int] = 7
+EXP_BUY_AMOUNT: Final[int] = 4
+EXP_BUY_COST: Final[int] = 4
+EXP_BUY_MIN_LEVEL: Final[int] = 2
+EXP_LEVEL_AMOUNT: Final[int] = 2
+MAX_LEVEL: Final[int] = 9
+NUM_PLAYERS: Final[int] = 8
+REROLL_COST: Final[int] = 2
 
 # Champ cost -> total # in pool
-CHAMP_POOL_SIZE: Dict[int, int] = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10}
+CHAMP_POOL_SIZE: Final[Dict[int, int]] = {1: 29, 2: 22, 3: 18, 4: 12, 5: 10}
 
 # Player level -> champ drop rate
-CHAMP_DROP_RATE: Dict[int, List[float]] = {
+CHAMP_DROP_RATE: Final[Dict[int, List[float]]] = {
     1: [1, 0, 0, 0, 0],
     2: [1, 0, 0, 0, 0],
     3: [0.75, 0.25, 0, 0, 0],
@@ -29,7 +28,13 @@ CHAMP_DROP_RATE: Dict[int, List[float]] = {
 }
 
 # Champion level -> max health/atk damage modifier
-CHAMP_LEVEL_SCALING: Dict[int, float] = {0: 0.7, 1: 1.0, 2: 1.8, 3: 3.24, 4: 5.832}
+CHAMP_LEVEL_SCALING: Final[Dict[int, float]] = {
+    0: 0.7,
+    1: 1.0,
+    2: 1.8,
+    3: 3.24,
+    4: 5.832,
+}
 
 # Player level -> exp cap to level up
-LEVEL_EXP_CAP: Dict[int, int] = {3: 3, 4: 6, 5: 10, 6: 20, 7: 36, 8: 56, 9: 80}
+LEVEL_EXP_CAP: Final[Dict[int, int]] = {3: 3, 4: 6, 5: 10, 6: 20, 7: 36, 8: 56, 9: 80}
