@@ -1,5 +1,6 @@
-from typing import List, Union, cast, TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Union, cast
 
+from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 
 if TYPE_CHECKING:
@@ -8,15 +9,14 @@ if TYPE_CHECKING:
     from src.models.player import Player
 
 
-class Board:
+class PlayerBoard(Board):
     """Hexagonal grid representing a player's half of the full field."""
 
     num_champs: int
-    hexes: List[List[Union[Champion, None]]]
     player: Player
 
     def __init__(self, player: Player):
-        self.hexes = [[None for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT)]
+        super().__init__(BOARD_WIDTH, BOARD_HEIGHT)
         self.player = player
         self.num_champs = 0
 
@@ -30,78 +30,60 @@ class Board:
                 self.hexes[new_pos.y][new_pos.x] = champ
                 return True
             return False
-        elif not pos.is_valid():
+        elif not self.is_position_valid(pos):
             # Make sure given position is valid
             return False
         elif self.is_hex_empty(pos):
             # Place champ on board
             if self.num_champs < self.player.max_champs:
                 self.num_champs += 1
-                self.__set(pos, champ)
+                self.set(pos, champ)
                 return True
             return False
         else:
             # Swap champs and return swapped champ
-            champ_to_bench = cast(Champion, self.get_champ(pos))
+            champ_to_bench = cast(Champion, self.get(pos))
             self.hexes[pos.y][pos.x] = champ
             return champ_to_bench
 
-    def get_champ(self, pos: Point) -> Union[Champion, None]:
-        try:
-            return self.hexes[pos.y][pos.x]
-        except:
-            return None
-
     def is_full(self) -> bool:
         return self.num_champs >= self.player.max_champs
-
-    def is_hex_empty(self, pos: Point) -> Union[bool, None]:
-        if not pos.is_valid():
-            return None
-        return self.get_champ(pos) == None
 
     def move_champ(self, start_pos: Point, end_pos: Point) -> bool:
         """
         Move a champ on this board to a different position. Returns whether or not move was valid.
         """
         if (
-            not start_pos.is_valid()
-            or not end_pos.is_valid()
+            not self.is_position_valid(start_pos)
+            or not self.is_position_valid(end_pos)
             or start_pos.is_equal(end_pos)
         ):
             return False
 
-        champ1 = self.get_champ(start_pos)
-        champ2 = self.get_champ(end_pos)
+        champ1 = self.get(start_pos)
+        champ2 = self.get(end_pos)
         if not champ1:
             return False
         elif champ2:
             # Swap champs
-            self.__set(start_pos, champ2)
-            self.__set(end_pos, champ1)
+            self.set(start_pos, champ2)
+            self.set(end_pos, champ1)
         else:
             # Place champ
-            self.__set(start_pos, None)
-            self.__set(end_pos, champ1)
+            self.set(start_pos, None)
+            self.set(end_pos, champ1)
         return True
 
     def remove_champ(self, pos: Point) -> Union[Champion, None]:
-        if not pos.is_valid():
+        if not pos: #.is_valid():
             return None
 
-        champ = self.get_champ(pos)
+        champ = self.get(pos)
         if champ:
-            self.__set(pos, None)
+            self.set(pos, None)
             self.num_champs -= 1
             return champ
         return None
-
-    def __set(self, pos: Point, champ: Union[Champion, None]) -> bool:
-        try:
-            self.hexes[pos.y][pos.x] = champ
-            return True
-        except:
-            return False
 
     def __get_free_hex(self) -> Union[Point, None]:
         for y in reversed(range(BOARD_HEIGHT)):

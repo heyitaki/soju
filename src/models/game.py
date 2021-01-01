@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 from random import choice, sample
-from typing import List, Tuple, TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Tuple
 
 from src.constants import NUM_PLAYERS
 from src.load_data import load_champ_data

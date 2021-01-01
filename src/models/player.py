@@ -8,7 +8,7 @@ from src.constants import (
     REROLL_COST,
 )
 from src.models.bench import Bench
-from src.models.board import Board
+from src.models.boards.player_board import PlayerBoard
 from src.models.helpers.point import Point
 from src.models.shop import Shop
 
@@ -20,7 +20,7 @@ class Player:
     """Container for all player-specific state. Represents a player in a game."""
 
     bench: Bench
-    board: Board
+    board: PlayerBoard
     experience: int
     gold: int
     has_chosen: bool
@@ -32,7 +32,7 @@ class Player:
     shop: Shop
 
     def __init__(self, name: str, pool: Pool):
-        self.board = Board(self)
+        self.board = PlayerBoard(self)
         self.bench = Bench(self)
         self.experience = 0
         self.gold = 0
@@ -46,7 +46,7 @@ class Player:
 
     def bench_champ(self, board_pos: Point, bench_index: int = None) -> bool:
         """Move champ from board to bench if possible."""
-        champ1 = self.board.get_champ(board_pos)
+        champ1 = self.board.get(board_pos)
         if champ1:
             if not bench_index == None and (
                 champ2 := self.bench.get_champ(bench_index)
@@ -130,7 +130,7 @@ class Player:
     def unbench_champ(self, bench_index: int, board_pos: Point):
         """Move champ from bench to board if possible."""
         champ1 = self.bench.get_champ(bench_index)
-        champ2 = self.board.get_champ(board_pos)
+        champ2 = self.board.get(board_pos)
         if champ1:
             if champ2:
                 # Swap champs

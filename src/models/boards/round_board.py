@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from src.models.player import Player
 
 
-class Field:
+class RoundBoard:
     playerHome: Player
     playerAway: Player
     hexes: List[List[Union[Champion, None]]]
@@ -22,6 +22,6 @@ class Field:
     def setup_hexes(self):
         for y in range(BOARD_HEIGHT):
             for x in range(BOARD_WIDTH):
-                self.hexes[y][x] = self.playerHome.board.get_champ(Point(x, y))
+                self.hexes[y][x] = self.playerHome.board.get(Point(x, y))
 
     # def __set(self, )
