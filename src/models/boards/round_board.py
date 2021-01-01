@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Tuple, Union
+from typing import TYPE_CHECKING, List, Optional, Tuple, Union
 
 from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
@@ -16,10 +16,15 @@ class RoundBoard(Board):
     def __init__(self, players: Tuple[Player, Player]):
         super().__init__(BOARD_WIDTH, BOARD_HEIGHT * 2)
         self.playerHome, self.playerAway = players
+        self.setup_hexes()
 
     def setup_hexes(self):
         for y in range(BOARD_HEIGHT):
             for x in range(BOARD_WIDTH):
-                self.hexes[y][x] = self.playerHome.board.get(Point(x, y))
+                pos = Point(x, y)
+                posA = self.translate_point(pos)
+                self.set(pos, self.playerHome.board.get(pos))
+                self.set(posA, self.playerAway.board.get(pos))
 
-    # def __set(self, )
+    def translate_point(self, pos: Point) -> Point:
+        return Point(self.width - pos.x, self.height - pos.y)

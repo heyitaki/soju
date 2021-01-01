@@ -1,4 +1,6 @@
-from typing import TYPE_CHECKING, List, Optional, Union, cast
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Optional, Union, cast
 
 from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
@@ -34,7 +36,7 @@ class PlayerBoard(Board):
         else:
             # Swap champs and return swapped champ
             champ_to_bench = cast(Champion, self.get(pos))
-            self.hexes[pos.y][pos.x] = champ
+            self.set(pos, champ)
             return champ_to_bench
 
     def add_champ_from_carousel(self, champ: Champion) -> bool:
@@ -51,7 +53,7 @@ class PlayerBoard(Board):
 
         if new_pos:
             self.num_champs += 1
-            self.hexes[new_pos.y][new_pos.x] = champ
+            self.set(new_pos, champ)
             return True
         return False
 

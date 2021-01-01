@@ -1,6 +1,6 @@
 import logging
 from random import uniform
-from typing import Dict, Sequence, Union, TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict, Sequence, Union
 
 from src.constants import CHAMP_DROP_RATE, CHAMP_POOL_SIZE
 
