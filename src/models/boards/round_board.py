@@ -1,5 +1,6 @@
-from typing import List, Tuple, Union, TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Tuple, Union
 
+from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 
 if TYPE_CHECKING:
@@ -8,15 +9,12 @@ if TYPE_CHECKING:
     from src.models.player import Player
 
 
-class RoundBoard:
+class RoundBoard(Board):
     playerHome: Player
     playerAway: Player
-    hexes: List[List[Union[Champion, None]]]
 
     def __init__(self, players: Tuple[Player, Player]):
-        self.hexes = [
-            [None for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT * 2)
-        ]
+        super().__init__(BOARD_WIDTH, BOARD_HEIGHT * 2)
         self.playerHome, self.playerAway = players
 
     def setup_hexes(self):

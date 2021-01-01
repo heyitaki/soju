@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Union, cast
+from typing import TYPE_CHECKING, List, Optional, Union, cast
 
 from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
@@ -21,16 +21,7 @@ class PlayerBoard(Board):
         self.num_champs = 0
 
     def add_champ(self, champ: Champion, pos: Point) -> Union[bool, Champion]:
-        if not pos:
-            # Only time we're adding a champ without a specified position is from carousel while
-            # player has a full bench
-            new_pos = self.__get_free_hex()
-            if new_pos:
-                self.num_champs += 1
-                self.hexes[new_pos.y][new_pos.x] = champ
-                return True
-            return False
-        elif not self.is_position_valid(pos):
+        if not self.is_position_valid(pos):
             # Make sure given position is valid
             return False
         elif self.is_hex_empty(pos):
@@ -45,6 +36,24 @@ class PlayerBoard(Board):
             champ_to_bench = cast(Champion, self.get(pos))
             self.hexes[pos.y][pos.x] = champ
             return champ_to_bench
+
+    def add_champ_from_carousel(self, champ: Champion) -> bool:
+        """
+        Add a champ to the board without a specified position. This happens when player picks
+        champ from carousel with a full bench.
+        """
+        new_pos: Optional[Point] = None
+        for y in reversed(range(BOARD_HEIGHT)):
+            for x in range(BOARD_WIDTH):
+                pos = Point(x, y)
+                if self.is_hex_empty(pos):
+                    new_pos = pos
+
+        if new_pos:
+            self.num_champs += 1
+            self.hexes[new_pos.y][new_pos.x] = champ
+            return True
+        return False
 
     def is_full(self) -> bool:
         return self.num_champs >= self.player.max_champs
@@ -75,7 +84,7 @@ class PlayerBoard(Board):
         return True
 
     def remove_champ(self, pos: Point) -> Union[Champion, None]:
-        if not pos: #.is_valid():
+        if not self.is_position_valid(pos):
             return None
 
         champ = self.get(pos)
@@ -83,12 +92,4 @@ class PlayerBoard(Board):
             self.set(pos, None)
             self.num_champs -= 1
             return champ
-        return None
-
-    def __get_free_hex(self) -> Union[Point, None]:
-        for y in reversed(range(BOARD_HEIGHT)):
-            for x in range(BOARD_WIDTH):
-                pos = Point(x, y)
-                if self.is_hex_empty(pos):
-                    return pos
         return None
