@@ -25,19 +25,21 @@ class Player:
     gold: int
     has_chosen: bool
     health: int
+    id: int
     level: int
     max_champs: int  # Can be different from level because of FON
     name: str
     pool: Pool
     shop: Shop
 
-    def __init__(self, name: str, pool: Pool):
+    def __init__(self, id: int, name: str, pool: Pool):
         self.board = PlayerBoard(self)
         self.bench = Bench(self)
         self.experience = 0
         self.gold = 0
         self.has_chosen = False
         self.health = 100
+        self.id = id
         self.level = 1
         self.max_champs = 1
         self.name = name

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from copy import copy, deepcopy
 from types.champ_stats import StatsData
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING, List, Optional, Union
 
 from src.load_data import load_champ_data
 
@@ -19,7 +19,7 @@ class Champion:
     items: List[Item]
     level: int
     name: str
-    owner: Player
+    owner: Optional[Player]
     stats: ChampStats
     traits: List[str]
 
@@ -30,16 +30,20 @@ class Champion:
         self.items = []
         self.level = 1
         self.name = champ_data["name"]
+        self.owner = None
         self.stats = ChampStats(champ_data["stats"])
         self.traits = champ_data["traits"]
 
-    def clone(self, id: int, chosen_trait: str = None, item: Item = None) -> Champion:
+    def clone(
+        self, id: int, owner: Player, chosen_trait: str = None, item: Item = None
+    ) -> Champion:
         """
         Create a copy of this champ with specified chosen trait, item, and id.
         TODO: when implementing items + chosen, need to remove traits given by spat items
         """
         new_champ = deepcopy(self)
         new_champ.id = id
+        new_champ.owner = owner
         new_champ.level = 2 if chosen_trait else 1
         new_champ.chosen_trait = chosen_trait
         new_champ.items = [item] if item else []

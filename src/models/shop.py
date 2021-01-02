@@ -31,7 +31,7 @@ class Shop:
 
         self.__flush()
         while len(self.champs) < 5:
-            new_champ = self.pool.get(self.player.level)
+            new_champ = self.pool.get(self.player)
             if new_champ:
                 self.champs.append(new_champ)
 

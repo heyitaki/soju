@@ -1,6 +1,7 @@
 import logging
 from random import uniform
 from typing import TYPE_CHECKING, Dict, Sequence, Union
+from models.player import Player
 
 from src.constants import CHAMP_DROP_RATE, CHAMP_POOL_SIZE
 
@@ -27,9 +28,9 @@ class Pool:
             self.cost_to_counts[champ.cost][champ.name] = CHAMP_POOL_SIZE[champ.cost]
             self.name_to_champ[champ.name] = champ
 
-    def get(self, player_level: int) -> Union[Champion, None]:
+    def get(self, player: Player) -> Union[Champion, None]:
         """Get random champ from pool according to champ drop & player level probabilities."""
-        rates = CHAMP_DROP_RATE[player_level]
+        rates = CHAMP_DROP_RATE[player.level]
 
         # Get champ cost
         champ_cost = choose_rand_from_list(rates)
@@ -49,10 +50,10 @@ class Pool:
 
         # Update count and return Champion
         if champ_tuple[1] <= 0:
-            return self.get(player_level)
+            return self.get(player)
         name_to_counts[champ_tuple[0]] = champ_tuple[1] - 1
         self.max_id += 1
-        return self.name_to_champ[champ_tuple[0]].clone(self.max_id)
+        return self.name_to_champ[champ_tuple[0]].clone(self.max_id, player)
 
     def put(self, champ: Champion) -> None:
         """Introduce champ back to this pool."""
