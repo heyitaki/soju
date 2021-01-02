@@ -67,7 +67,7 @@ class PlayerBoard(Board):
         if (
             not self.is_position_valid(start_pos)
             or not self.is_position_valid(end_pos)
-            or start_pos.is_equal(end_pos)
+            or start_pos == end_pos
         ):
             return False
 

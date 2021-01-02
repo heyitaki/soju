@@ -1,7 +1,12 @@
-from typing import List
+from __future__ import annotations
 
-from src.models.boards.board import Board
+from typing import TYPE_CHECKING, List, Optional
+
+from src.models.champion import Champion
 from src.models.helpers.point import Point
+
+if TYPE_CHECKING:
+    from src.models.boards.board import Board
 
 
 def get_neighbors(board: Board, pos: Point) -> List[Point]:
@@ -17,12 +22,21 @@ def get_neighbors(board: Board, pos: Point) -> List[Point]:
     return list(filter(lambda pos: board.is_position_valid(pos), neighbors))
 
 
-def get_closest_enemy(board: Board, pos: Point) -> Point:
+def get_closest_enemy(board: Board, pos: Point) -> Optional[Champion]:
     visited = set()
     queue = [pos]
+
+    try:
+        owner_id = board.get(pos).owner.id
+    except:
+        return None
+
     while len(queue) > 0 and not len(visited) == board.height * board.width:
         curr_pos = queue.pop(0)
         if not curr_pos in visited:
-            if not board.get(curr_pos) == None:
-                
-    return Point(0, 0)
+            champ = board.get(curr_pos)
+            if champ and not champ.owner.id == owner_id:
+                return champ
+            visited.add(curr_pos)
+            queue.extend(get_neighbors(board, curr_pos))
+    return None

@@ -18,8 +18,7 @@ class Point:
             return False
 
     def __hash__(self):
-        tuple = (self.x, self.y)
-        return hash(tuple)
+        return hash((self.x, self.y))
 
     def __repr__(self):
         return f"Point(x={self.x}, y={self.y})"
