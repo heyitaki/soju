@@ -1,21 +1,20 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import Final
 
-if TYPE_CHECKING:
-    from src.models.points.cube_point import CubePoint
+from src.models.points.cube_point import CubePoint
 
 
 class OffsetPoint:
-    x: int
-    y: int
+    x: Final[float]
+    y: Final[float]
 
-    def __init__(self, x: int, y: int):
+    def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
 
-    @classmethod
-    def from_cube(cls, cp: CubePoint):
-        x = round(cp.x + (cp.z + cp.z % 2) / 2)
-        y = round(cp.z)
-        return cls(x, y)
+    def to_cube(self) -> CubePoint:
+        x = self.x - (self.y + self.y % 2) / 2
+        z = self.y
+        y = -x - z
+        return CubePoint(x, y, z)
