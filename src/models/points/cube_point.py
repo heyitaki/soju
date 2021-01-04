@@ -6,11 +6,13 @@ import src.models.points.offset_point
 
 
 class CubePoint:
-    x: Final[float]
-    y: Final[float]
-    z: Final[float]
+    x: Final[int]
+    y: Final[int]
+    z: Final[int]
 
-    def __init__(self, x: float, y: float, z: float):
+    def __init__(self, x: int, y: int, z: int):
+        if not (x + y + z == 0):
+            raise Exception("Tried to init CubePoint with invalid coordinates")
         self.x = x
         self.y = y
         self.z = z
@@ -30,6 +32,6 @@ class CubePoint:
         return f"CubePoint(x={self.x}, y={self.y}, z={self.z})"
 
     def to_offset(self) -> src.models.points.offset_point.OffsetPoint:
-        x = self.x + (self.z + self.z % 2) / 2
-        y = self.z
+        x = self.x + (self.y + self.y % 2) // 2
+        y = self.y
         return src.models.points.offset_point.OffsetPoint(x, y)

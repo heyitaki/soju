@@ -9,7 +9,7 @@ from src.constants import (
 )
 from src.models.bench import Bench
 from src.models.boards.player_board import PlayerBoard
-from src.models.helpers.point import Point
+from src.models.points.offset_point import OffsetPoint
 from src.models.shop import Shop
 
 if TYPE_CHECKING:
@@ -46,7 +46,7 @@ class Player:
         self.pool = pool
         self.shop = Shop(self, pool)
 
-    def bench_champ(self, board_pos: Point, bench_index: int = None) -> bool:
+    def bench_champ(self, board_pos: OffsetPoint, bench_index: int = None) -> bool:
         """Move champ from board to bench if possible."""
         champ1 = self.board.get(board_pos)
         if champ1:
@@ -96,7 +96,7 @@ class Player:
             self.level += 1
         return True
 
-    def move_champ(self, start_pos: Point, end_pos: Point) -> bool:
+    def move_champ(self, start_pos: OffsetPoint, end_pos: OffsetPoint) -> bool:
         """Move a champ on the board to a different position."""
         return self.board.move_champ(start_pos, end_pos)
 
@@ -117,7 +117,7 @@ class Player:
             return True
         return False
 
-    def sell_champ_from_board(self, pos: Point) -> bool:
+    def sell_champ_from_board(self, pos: OffsetPoint) -> bool:
         """Deja vu?"""
         champ = self.board.remove_champ(pos)
         if champ:
@@ -129,7 +129,7 @@ class Player:
     def toggle_shop_lock(self):
         return
 
-    def unbench_champ(self, bench_index: int, board_pos: Point):
+    def unbench_champ(self, bench_index: int, board_pos: OffsetPoint):
         """Move champ from bench to board if possible."""
         champ1 = self.bench.get_champ(bench_index)
         champ2 = self.board.get(board_pos)

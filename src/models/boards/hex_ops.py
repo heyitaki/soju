@@ -3,26 +3,26 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List, Optional
 
 from src.models.champion import Champion
-from src.models.helpers.point import Point
+from src.models.points.offset_point import OffsetPoint
 
 if TYPE_CHECKING:
     from src.models.boards.board import Board
 
 
-def get_neighbors(board: Board, pos: Point) -> List[Point]:
+def get_neighbors(board: Board, pos: OffsetPoint) -> List[OffsetPoint]:
     offset = 1 if pos.y % 2 == 0 else 0
     neighbors = [
-        Point(pos.x + offset, pos.y + 1),
-        Point(pos.x + offset + 1, pos.y + 1),
-        Point(pos.x - 1, pos.y),
-        Point(pos.x + 1, pos.y),
-        Point(pos.x + offset, pos.y - 1),
-        Point(pos.x + offset + 1, pos.y - 1),
+        OffsetPoint(pos.x + offset, pos.y + 1),
+        OffsetPoint(pos.x + offset + 1, pos.y + 1),
+        OffsetPoint(pos.x - 1, pos.y),
+        OffsetPoint(pos.x + 1, pos.y),
+        OffsetPoint(pos.x + offset, pos.y - 1),
+        OffsetPoint(pos.x + offset + 1, pos.y - 1),
     ]
     return list(filter(lambda pos: board.is_position_valid(pos), neighbors))
 
 
-def get_closest_enemy(board: Board, pos: Point) -> Optional[Champion]:
+def get_closest_enemy(board: Board, pos: OffsetPoint) -> Optional[Champion]:
     visited = set()
     queue = [pos]
 

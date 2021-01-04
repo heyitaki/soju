@@ -7,8 +7,8 @@ from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 
 if TYPE_CHECKING:
     from src.models.champion import Champion
-    from src.models.helpers.point import Point
     from src.models.player import Player
+    from src.models.points.offset_point import OffsetPoint
 
 
 class PlayerBoard(Board):
@@ -22,7 +22,7 @@ class PlayerBoard(Board):
         self.player = player
         self.num_champs = 0
 
-    def add_champ(self, champ: Champion, pos: Point) -> Union[bool, Champion]:
+    def add_champ(self, champ: Champion, pos: OffsetPoint) -> Union[bool, Champion]:
         if not self.is_position_valid(pos):
             # Make sure given position is valid
             return False
@@ -44,10 +44,10 @@ class PlayerBoard(Board):
         Add a champ to the board without a specified position. This happens when player picks
         champ from carousel with a full bench.
         """
-        new_pos: Optional[Point] = None
+        new_pos: Optional[OffsetPoint] = None
         for y in reversed(range(BOARD_HEIGHT)):
             for x in range(BOARD_WIDTH):
-                pos = Point(x, y)
+                pos = OffsetPoint(x, y)
                 if self.is_hex_empty(pos):
                     new_pos = pos
 
@@ -60,7 +60,7 @@ class PlayerBoard(Board):
     def is_full(self) -> bool:
         return self.num_champs >= self.player.max_champs
 
-    def move_champ(self, start_pos: Point, end_pos: Point) -> bool:
+    def move_champ(self, start_pos: OffsetPoint, end_pos: OffsetPoint) -> bool:
         """
         Move a champ on this board to a different position. Returns whether or not move was valid.
         """
@@ -85,7 +85,7 @@ class PlayerBoard(Board):
             self.set(end_pos, champ1)
         return True
 
-    def remove_champ(self, pos: Point) -> Union[Champion, None]:
+    def remove_champ(self, pos: OffsetPoint) -> Union[Champion, None]:
         if not self.is_position_valid(pos):
             return None
 

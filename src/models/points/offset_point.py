@@ -7,10 +7,10 @@ import src.models.points.cube_point
 
 
 class OffsetPoint:
-    x: Final[float]
-    y: Final[float]
+    x: Final[int]
+    y: Final[int]
 
-    def __init__(self, x: float, y: float):
+    def __init__(self, x: int, y: int):
         self.x = x
         self.y = y
 
@@ -29,7 +29,7 @@ class OffsetPoint:
         return f"OffsetPoint(x={self.x}, y={self.y})"
 
     def to_cube(self) -> src.models.points.cube_point.CubePoint:
-        x = self.x - (self.y + self.y % 2) / 2
-        z = self.y
-        y = -x - z
+        x = self.x - (self.y + self.y % 2) // 2
+        y = self.y
+        z = -x - y
         return src.models.points.cube_point.CubePoint(x, y, z)
