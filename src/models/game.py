@@ -23,7 +23,9 @@ class Game:
         self.pool = Pool(load_champ_data())
         self.rankings = []
         self.round = 0
-        self.players = [Player(str(i), self.pool) for i in range(NUM_PLAYERS)]
+        self.players = [
+            Player(i, f"Player #{i}", self.pool) for i in range(NUM_PLAYERS)
+        ]
 
     def get_matchups(self):
         """

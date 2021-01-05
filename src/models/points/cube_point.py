@@ -17,9 +17,17 @@ class CubePoint:
         self.y = y
         self.z = z
 
+    def __add__(self, other) -> CubePoint:
+        if isinstance(other, CubePoint):
+            return CubePoint(self.x + other.x, self.y + other.y, self.z + other.z)
+        elif isinstance(other, src.models.points.offset_point.OffsetPoint):
+            return self + other.to_cube()
+        else:
+            raise ValueError
+
     def __eq__(self, other):
         if isinstance(other, CubePoint):
-            return self.x == other.x and self.y == other.y
+            return self.x == other.x and self.y == other.y and self.z == other.z
         elif isinstance(other, src.models.points.offset_point.OffsetPoint):
             return self == other.to_cube()
         else:

@@ -14,6 +14,14 @@ class OffsetPoint:
         self.x = x
         self.y = y
 
+    def __add__(self, other) -> src.models.points.cube_point.CubePoint:
+        if isinstance(other, OffsetPoint):
+            return self.to_cube() + other.to_cube()
+        elif isinstance(other, src.models.points.cube_point.CubePoint):
+            return self.to_cube() + other
+        else:
+            raise ValueError
+
     def __eq__(self, other):
         if isinstance(other, OffsetPoint):
             return self.x == other.x and self.y == other.y
