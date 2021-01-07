@@ -37,6 +37,8 @@ class CubePoint:
         return hash((self.x, self.y, self.z))
 
     def __repr__(self):
+        if True:
+            return str(self.to_offset())
         return f"CubePoint(x={self.x}, y={self.y}, z={self.z})"
 
     def to_offset(self) -> src.models.points.offset_point.OffsetPoint:
