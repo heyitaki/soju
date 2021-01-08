@@ -1,26 +1,13 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List, Optional, Union
+from typing import TYPE_CHECKING, List, Union
 
-from src.models.champion import Champion
-from src.models.points.cube_point import CubePoint as Cube
-from src.models.points.offset_point import OffsetPoint as Offset
+from models.champion import Champion
+from src.models.boards.board import Board
 
 if TYPE_CHECKING:
-    from src.models.boards.board import Board
-
-directions: List[Cube] = [
-    Cube(1, 0, -1),  # NE
-    Cube(0, 1, -1),  # NW
-    Cube(-1, 1, 0),  # W
-    Cube(-1, 0, 1),  # SW
-    Cube(0, -1, 1),  # SE
-    Cube(1, -1, 0),  # E
-]
-
-
-def get_neighbors(point: Union[Cube, Offset]) -> List[Cube]:
-    return list(map(lambda dir: point + dir, directions))
+    from src.models.points.cube_point import CubePoint as Cube
+    from src.models.points.offset_point import OffsetPoint as Offset
 
 
 def get_valid_points(board: Board, points: List[Union[Cube, Offset]]):
