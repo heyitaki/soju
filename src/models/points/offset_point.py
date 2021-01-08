@@ -44,22 +44,21 @@ class OffsetPoint:
         The width of a hexagon (pointy top) with side length 1 is sqrt(3) while the height is 2. We
         can get cartesian coordinates with the following formulas:
 
-            newX = .5w + xw + offset,
+            dx = .5w if y % 2 == 1 else 0,
+            newX = .5w + xw + dx,
             newY = .5h + .75yh,
-            offset = .5w if y % 2 == 1 else 0,
 
-        where (newX, newY) is our cartesian coordinate, (x, y) is the offset coordinate, offset is
-        the shift in indented rows and w and h are the width and height of the hexagon respectively.
+        where (newX, newY) is our cartesian coordinate, (x, y) is the offset coordinate, dx is the
+        shift in indented rows and w and h are the width and height of the hexagon respectively.
         """
         w = 1.73205  # sqrt(3)
         h = 2
-        offset = 0.5 * w if self.y % 2 == 1 else 0
-        x = 0.5 * w + self.x * w + offset
+        dx = 0.5 * w if self.y % 2 == 1 else 0
+        x = 0.5 * w + self.x * w + dx
         y = 0.5 * h + 0.75 * self.y * h
         return (x, y)
 
     def to_cube(self) -> src.models.points.cube_point.CubePoint:
         x = self.x - (self.y + self.y % 2) // 2
         y = self.y
-        z = -x - y
-        return src.models.points.cube_point.CubePoint(x, y, z)
+        return src.models.points.cube_point.CubePoint(x, y)

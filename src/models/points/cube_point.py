@@ -48,6 +48,9 @@ class CubePoint:
             return str(self.to_offset())
         return f"CubePoint(x={self.x}, y={self.y}, z={self.z})"
 
+    def to_cartesian(self):
+        return self.to_offset().to_cartesian()
+
     def to_offset(self) -> src.models.points.offset_point.OffsetPoint:
         x = self.x + (self.y + self.y % 2) // 2
         y = self.y
