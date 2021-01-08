@@ -14,6 +14,7 @@ class StatsData(TypedDict):
     mana: int
     mana_start: int
     range: int
+    shield: int
 
 
 class ChampStatsData(TypedDict):

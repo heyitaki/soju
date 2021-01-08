@@ -10,12 +10,12 @@ if TYPE_CHECKING:
     from src.models.boards.board import Board
 
 directions: List[Cube] = [
-    Cube(1, 0, -1),
-    Cube(1, -1, 0),
-    Cube(0, -1, 1),
-    Cube(-1, 0, 1),
-    Cube(-1, 1, 0),
-    Cube(0, 1, -1),
+    Cube(1, 0, -1),  # NE
+    Cube(0, 1, -1),  # NW
+    Cube(-1, 1, 0),  # W
+    Cube(-1, 0, 1),  # SW
+    Cube(0, -1, 1),  # SE
+    Cube(1, -1, 0),  # E
 ]
 
 
@@ -25,6 +25,10 @@ def get_neighbors(point: Union[Cube, Offset]) -> List[Cube]:
 
 def get_valid_points(board: Board, points: List[Union[Cube, Offset]]):
     return filter(lambda p: board.is_position_valid(p), points)
+
+
+def get_n_closest_enemies(board: Board, point: Union[Cube, Offset]) -> List[Champion]:
+    return []
 
 
 # def get_closest_enemy(board: Board, pos: OffsetPoint) -> Optional[Champion]:

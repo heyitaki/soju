@@ -82,6 +82,7 @@ class Stats:
     mana: int
     mana_start: int
     range: int
+    shield: int
 
     def __init__(self, data: StatsData):
         self.ability_power = data["ability_power"]
@@ -96,6 +97,7 @@ class Stats:
         self.mana = data["mana"]
         self.mana_start = data["mana_start"]
         self.range = data["range"]
+        self.shield = data["shield"]
 
     @classmethod
     def from_champ_stats_data(cls, data: ChampStatsData) -> Stats:
@@ -113,5 +115,6 @@ class Stats:
                 "mana": int(data["mana"]),
                 "mana_start": int(data["mana_start"]),
                 "range": int(data["range"]),
+                "shield": 0,
             }
         )
