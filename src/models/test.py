@@ -1,7 +1,7 @@
 from copy import copy
 
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
-from src.models.boards.board import Board
+from src.models.boards.hex_board import HexBoard
 from src.models.points.offset_point import OffsetPoint
 
 # # Are changes to class variables shared across instances? A: NO

@@ -5,6 +5,7 @@ from typing import Final
 
 # Get rid of circular import
 import src.models.points.cube_point
+from src.models.points.point import Point
 
 
 class OffsetPoint:
@@ -62,3 +63,9 @@ class OffsetPoint:
         x = self.x - (self.y + self.y % 2) // 2
         y = self.y
         return src.models.points.cube_point.CubePoint(x, y)
+
+
+def offset(point: Point):
+    if isinstance(point, src.models.points.cube_point.CubePoint):
+        point = point.to_offset()
+    return point

@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING, List, Optional, Tuple, Union
 
-from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
+from src.models.boards.hex_board import HexBoard
 
 if TYPE_CHECKING:
     from src.models.champion import Champion
@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from src.models.points.offset_point import OffsetPoint
 
 
-class RoundBoard(Board):
+class RoundBoard(HexBoard):
     playerHome: Player
     playerAway: Player
 

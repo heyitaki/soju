@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional, Union, cast
+from typing import TYPE_CHECKING, List, Optional, Union, cast
 
-from models.boards.board import Board
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
+from src.models.boards.champ_board import ChampBoard
 
 if TYPE_CHECKING:
     from src.models.champion import Champion
@@ -11,16 +11,18 @@ if TYPE_CHECKING:
     from src.models.points.offset_point import OffsetPoint
 
 
-class PlayerBoard(Board):
-    """Hexagonal grid representing a player's half of the full field."""
+class PlayerBoard(ChampBoard):
+    """
+    Hexagonal grid (offset evenr) representing a player's half of the full field.
+    """
 
-    num_champs: int
+    champs: List[Champion]
     player: Player
 
     def __init__(self, player: Player):
-        super().__init__(BOARD_WIDTH, BOARD_HEIGHT)
+        # super().__init__(BOARD_WIDTH, BOARD_HEIGHT)
+        self.champs = []
         self.player = player
-        self.num_champs = 0
 
     def add_champ(self, champ: Champion, pos: OffsetPoint) -> Union[bool, Champion]:
         if not self.is_position_valid(pos):
@@ -28,14 +30,15 @@ class PlayerBoard(Board):
             return False
         elif self.is_hex_empty(pos):
             # Place champ on board
-            if self.num_champs < self.player.max_champs:
-                self.num_champs += 1
-                self.set(pos, champ)
+            if len(self.champs) < self.player.max_champs:
+                champ.setpos(pos)
+                self.champs.append(champ)
                 return True
             return False
         else:
             # Swap champs and return swapped champ
             champ_to_bench = cast(Champion, self.get(pos))
+
             self.set(pos, champ)
             return champ_to_bench
 

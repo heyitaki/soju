@@ -3,18 +3,20 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List, Union
 
 from models.champion import Champion
-from src.models.boards.board import Board
+from src.models.boards.hex_board import HexBoard
 
 if TYPE_CHECKING:
     from src.models.points.cube_point import CubePoint as Cube
     from src.models.points.offset_point import OffsetPoint as Offset
 
 
-def get_valid_points(board: Board, points: List[Union[Cube, Offset]]):
+def get_valid_points(board: HexBoard, points: List[Union[Cube, Offset]]):
     return filter(lambda p: board.is_position_valid(p), points)
 
 
-def get_n_closest_enemies(board: Board, point: Union[Cube, Offset]) -> List[Champion]:
+def get_n_closest_enemies(
+    board: HexBoard, point: Union[Cube, Offset]
+) -> List[Champion]:
     return []
 
 

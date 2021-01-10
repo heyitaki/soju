@@ -5,6 +5,7 @@ from types.champ_stats import StatsData
 from typing import TYPE_CHECKING, List, Optional, Union
 
 from src.load_data import load_champ_data
+from src.models.points.offset_point import OffsetPoint
 
 if TYPE_CHECKING:
     from src.models.item import Item
@@ -20,6 +21,7 @@ class Champion:
     level: int
     name: str
     owner: Optional[Player]
+    position: Optional[OffsetPoint]
     stats: ChampStats
     traits: List[str]
 
@@ -55,6 +57,9 @@ class Champion:
             return self.cost
         else:
             return self.cost - 1
+
+    def setpos(self, pos: OffsetPoint):
+        self.pos = pos
 
 
 class ChampStats:

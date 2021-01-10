@@ -7,9 +7,9 @@ from src.constants import NUM_PLAYERS
 from src.load_data import load_champ_data
 
 if TYPE_CHECKING:
-    from src.models.helpers.result import Result
     from src.models.player import Player
     from src.models.pool import Pool
+    from src.models.utils.result import Result
 
 
 class Game:
