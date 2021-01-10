@@ -12,7 +12,6 @@ if TYPE_CHECKING:
 
 
 class HexBoard:
-    """"""
 
     height: int
     hexes: List[List[Optional[Champion]]]

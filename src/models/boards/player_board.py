@@ -16,12 +16,10 @@ class PlayerBoard(ChampBoard):
     Hexagonal grid (offset evenr) representing a player's half of the full field.
     """
 
-    champs: List[Champion]
     player: Player
 
     def __init__(self, player: Player):
-        # super().__init__(BOARD_WIDTH, BOARD_HEIGHT)
-        self.champs = []
+        super().__init__(BOARD_WIDTH, BOARD_HEIGHT)
         self.player = player
 
     def add_champ(self, champ: Champion, pos: OffsetPoint) -> Union[bool, Champion]:
@@ -31,8 +29,7 @@ class PlayerBoard(ChampBoard):
         elif self.is_hex_empty(pos):
             # Place champ on board
             if len(self.champs) < self.player.max_champs:
-                champ.setpos(pos)
-                self.champs.append(champ)
+                self.set(pos, champ)
                 return True
             return False
         else:

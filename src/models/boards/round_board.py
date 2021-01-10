@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, List, Optional, Tuple, Union
+from typing import TYPE_CHECKING, List, Optional, Tuple, Union, cast
 
 from src.constants import BOARD_HEIGHT, BOARD_WIDTH
 from src.models.boards.hex_board import HexBoard
@@ -19,12 +19,14 @@ class RoundBoard(HexBoard):
         self.setup_hexes()
 
     def setup_hexes(self):
-        for y in range(BOARD_HEIGHT):
-            for x in range(BOARD_WIDTH):
-                pos = OffsetPoint(x, y)
-                posA = self.translate_point(pos)
-                self.set(pos, self.playerHome.board.get(pos))
-                self.set(posA, self.playerAway.board.get(pos))
+        for pos, champ in self.playerHome.board.champs.items():
+            champ.setpos(pos)
+            self.set(pos, champ)
+
+        for pos, champ in self.playerAway.board.champs.items():
+            pos = self.translate_point(pos)
+            champ.setpos(pos)
+            self.set(pos, champ)
 
     def translate_point(self, pos: OffsetPoint) -> OffsetPoint:
         return OffsetPoint(self.width - pos.x, self.height - pos.y)
