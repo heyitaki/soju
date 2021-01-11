@@ -32,7 +32,7 @@ class Player:
     pool: Pool
     shop: Shop
 
-    def __init__(self, id: int, name: str, pool: Pool):
+    def __init__(self, id: int, name: str, pool: Pool = None):
         self.board = PlayerBoard(self)
         self.bench = Bench(self)
         self.experience = 0
@@ -43,8 +43,9 @@ class Player:
         self.level = 1
         self.max_champs = 1
         self.name = name
-        self.pool = pool
-        self.shop = Shop(self, pool)
+        if pool:
+            self.pool = pool
+            self.shop = Shop(self, pool)
 
     def bench_champ(self, board_pos: OffsetPoint, bench_index: int = None) -> bool:
         """Move champ from board to bench if possible."""

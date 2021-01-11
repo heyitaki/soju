@@ -4,7 +4,7 @@ from copy import copy, deepcopy
 from types.champ_stats import StatsData
 from typing import TYPE_CHECKING, List, Optional, Union
 
-from src.load_data import load_champ_data
+from src.load_data import champ_data, load_champ_data
 from src.models.points.offset_point import OffsetPoint
 
 if TYPE_CHECKING:
@@ -60,6 +60,19 @@ class Champion:
 
     def setpos(self, pos: OffsetPoint):
         self.pos = pos
+
+    @staticmethod
+    def from_name(name: str):
+        try:
+            return Champion(
+                next(
+                    filter(
+                        lambda champ: champ["name"].lower() == name.lower(), champ_data
+                    )
+                )
+            )
+        except:
+            raise ValueError
 
 
 class ChampStats:

@@ -1,6 +1,8 @@
 from typing import Union
 
-from src.models.points.cube_point import CubePoint as Cube
-from src.models.points.offset_point import OffsetPoint as Offset
+import src.models.points.cube_point
+import src.models.points.offset_point
 
-Point = Union[Offset, Cube]
+Point = Union[
+    src.models.points.offset_point.OffsetPoint, src.models.points.cube_point.CubePoint
+]
